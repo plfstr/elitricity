@@ -1,0 +1,151 @@
+:root {
+  --col-body: #eee;
+  --col-background: #28a573;
+  --col-lowlight: #86e6c8;
+}
+
+@media only screen and (prefers-color-scheme: dark) {
+  :root {
+    --col-body: #ccc;
+    --col-background: #0e3022;
+    --col-lowlight: #1c5d43;
+  }
+}
+
+html {
+  box-sizing: border-box;
+  height: 100%;
+  margin: 0;
+}
+
+*,
+* :before,
+* :after {
+  box-sizing: inherit;
+  margin: 0.5rem;
+}
+
+body {
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: row nowrap;
+  margin: 0 auto;
+  font: normal 100%/1.5 sans-serif;
+  background: var(--col-background);
+  color: var(--col-body);
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  width: 100%;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  margin: 0;
+}
+
+li {
+  flex: 1;
+}
+
+a {
+  color: currentColor;
+}
+
+small,
+span,
+time,
+a {
+  margin: auto;
+}
+
+h2 {
+  text-transform: capitalize;
+  font-weight: normal;
+  display: inline-block;
+  margin: 0;
+  border-bottom: 2px solid var(--col-lowlight);
+}
+
+.num {
+  margin: 0;
+  font-weight: bold;
+  font-size: 1.875em;
+}
+
+.lowlight {
+  color: var(--col-lowlight);
+}
+
+header p,
+aside p,
+footer p {
+  display: inline;
+  padding: 0 0.75em;
+  background: var(--col-background);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+#output {
+  display: block;
+  margin: 1em auto;
+  border-top: 2px solid var(--col-lowlight);
+  border-bottom: 2px solid var(--col-lowlight);
+}
+
+#output {
+  margin: -1.25em auto;
+  padding: 1.5em 0;
+}
+
+@media only screen and (min-width:1024px) {
+
+  body{
+    font-size: 150%;
+  }
+  
+}
+
+.loader,
+.loader:before,
+.loader:after {
+  background: #fff;
+  animation: load1 1s 30 ease-in-out;
+  width: .5em;
+  height: 2em;
+  margin: 0;
+}
+.loader {
+  color: #ffffff;
+  text-indent: -9999em;
+  margin: 3em auto;
+  position: relative;
+  animation-delay: .33s;
+}
+.loader:before,
+.loader:after {
+  position: absolute;
+  top: 0;
+  content: '';
+}
+.loader:before {
+  left: -1em;
+}
+.loader:after {
+  left: 1em;
+  animation-delay: .66s
+}
+@keyframes load1 {
+  0%,
+  100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(1.5);
+  }
+}
