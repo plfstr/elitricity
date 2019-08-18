@@ -54,6 +54,8 @@ li {
 
 a {
   color: currentColor;
+  text-decoration-color: var(--col-lowlight);
+  text-underline-offset: .125em;
 }
 
 small,
