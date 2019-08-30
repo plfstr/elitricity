@@ -7,7 +7,7 @@
     "start_url" : "https://plfstr.github.io/elitricity/",
     "short_name" : "Elitricity",
     "theme_color" : "#28a573",
-    "description" : "Current mix of electricity sources in the UK National Grid using  the Carbon Intensity API by National Grid",
+    "description" : "Current mix of electricity sources in the UK National Grid using the Carbon Intensity API by National Grid",
     "orientation" : "any",
     "background_color" : "#28a573",
     "related_applications" : "",
