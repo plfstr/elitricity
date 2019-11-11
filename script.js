@@ -13,10 +13,10 @@ let templ = generation => html`
 	`
   )}
 	</ul>
-	<p class="lowlight"><small>(Updated <time datetime="${generation.data.from}">${new Date(generation.data.from).toLocaleString("en-GB")}</time>)</small></p>
+  <p class="lowlight"><small>(Updated <time datetime="${generation.data.from}">${new Date(generation.data.from).toLocaleString("en-GB")}</time>)</small><button type="button" aria-controls="#output" @click=${fetchdata}>Refresh Data?</button></p>
 `;
 
-let init = async () => {
+let fetchdata = async () => {
   const response = await fetch(
     "https://api.carbonintensity.org.uk/generation"
   ).catch(error => {
@@ -28,7 +28,7 @@ let init = async () => {
   render(templ(data), output);
 };
 
-init();
+fetchdata();
 
 if ("serviceWorker" in navigator) {
   if (navigator.serviceWorker.controller) {
