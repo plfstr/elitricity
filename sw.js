@@ -3,7 +3,9 @@ const CACHE = "elit-cache";
 const precacheFiles = [
   'index.html',
   'style.css',
-  'script.js'
+  'script.js',
+  'manifest.json',
+  'offline.html'
 ];
 
 // TODO: replace the following with the correct offline fallback page i.e.: const offlineFallbackPage = "offline.html";
