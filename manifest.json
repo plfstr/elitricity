@@ -3,7 +3,7 @@
     "lang" : "en",
     "name" : "UK E-Lit-tricity Grid",
     "scope" : "/elitricity/",
-    "display" : "fullscreen",
+    "display" : "standalone",
     "start_url" : "https://plfstr.github.io/elitricity/",
     "short_name" : "Elitricity",
     "theme_color" : "#28a573",
