@@ -28,13 +28,12 @@ let fetchdata = async () => {
   render(templ(data), output);
 };
 
-// Compare `generation.data.to` to `new Date`...
+// Compare `generation.data.to` + 60 mins, to `new Date`...
 let fetchexpired = () => {
-  let timeuntil = Date.parse(document.querySelector('ul').dataset.timeto);
+  let timevalid = 1000*60*60;
+  let timeuntil = Date.parse(document.querySelector('ul').dataset.timeto) + timevalid;
   let timenow = Date.parse(new Date());
-  if (timeuntil > timenow) {
-    return false;
-  }
+  return timeuntil > timenow; 
 }
 
 fetchdata();
