@@ -14,7 +14,7 @@ let templ = generation => html`
 	`
   )}
 	</ul>
-  <p class="lowlight"><small>(Updated <time datetime="${generation.data.from}">${new Date(generation.data.from).toLocaleString("en-GB")}</time>)</small><button type="button" aria-controls="#output" @click=${fetchdata} ?disabled=${!timeexpired}>Refresh Data?</button></p>
+  <p class="lowlight"><small>(Updated <time datetime="${generation.data.from}">${new Date(generation.data.from).toLocaleString("en-GB")}</time>)</small><button type="button" aria-controls="#output" @click=${fetchdata} ?hidden=${!timeexpired}>Refresh Data?</button></p>
 `;
 
 let fetchdata = async () => {
