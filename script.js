@@ -35,6 +35,8 @@ let fetchexpired = () => {
   let timeuntil = Date.parse(document.querySelector('ul').dataset.timeto) + timevalid;
   let timenow = Date.parse(new Date());
   return timeuntil > timenow; 
+  let timeuntil = new Date.(document.querySelector('ul').dataset.timeto + timevalid).getTime();
+  let timenow = new Date().getTime();
 }
 
 fetchdata();
