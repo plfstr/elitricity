@@ -43,9 +43,9 @@ let fetchagain = window.setTimeout(() => {
   if (fetchexpired() === true) {
     console.log('Data expired, fetching...');
     fetchdata();
-    fetchexpired = true;
+    timeexpired = true;
   } else {
-    fetchexpired = false;
+    timeexpired = false;
   }
   fetchagain;
 }, timevalid);
