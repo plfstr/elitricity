@@ -18,7 +18,8 @@ let templ = generation => html`
 
 let init = async () => {
   const response = await fetch(
-    "https://api.carbonintensity.org.uk/generation"
+    "https://api.carbonintensity.org.uk/generation",
+    {cache: 'no-store'}
   ).catch(error => {
     document.querySelector(
       "#output"
