@@ -1,6 +1,7 @@
 import { html, render } from "https://unpkg.com/lit-html?module";
 
 let output = document.querySelector("#output");
+let timevalid = 1000*60*30;
 let timeexpired = false;
 
 let templ = generation => html`
@@ -29,15 +30,25 @@ let fetchdata = async () => {
   render(templ(data), output);
 };
 
-// Compare `generation.data.to` + 60 mins, to `new Date`...
+// Compare `generation.data.to` + timevalid, to `new Date`...
 let fetchexpired = () => {
-  let timevalid = 1000*60*60;
-  let timeuntil = Date.parse(document.querySelector('ul').dataset.timeto) + timevalid;
-  let timenow = Date.parse(new Date());
-  return timeuntil > timenow; 
-  let timeuntil = new Date.(document.querySelector('ul').dataset.timeto + timevalid).getTime();
+  let timeto = document.querySelector('ul').dataset.timeto;
+  let timeuntil = new Date.(timeto + timevalid).getTime();
   let timenow = new Date().getTime();
+  return timenow > timeuntil;
 }
+
+// Reresh data...
+let fetchagain = window.setTimeout(() => {
+  if (fetchexpired() === true) {
+    console.log('Data expired, fetching...');
+    fetchdata();
+    fetchexpired = true;
+  } else {
+    fetchexpired = false;
+  }
+  fetchagain;
+}, timeuntil);
 
 fetchdata();
 
