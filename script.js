@@ -49,6 +49,7 @@ let fetchagain = window.setTimeout(() => {
   }
   fetchagain;
 }, timeuntil);
+}, timevalid);
 
 fetchdata();
 
