@@ -34,7 +34,7 @@ let fetchdata = async () => {
 };
 
 // Compare `generation.data.to` + timevalid, to `new Date`...
-let fetchexpired = () => {
+function fetchexpired() {
   let timeto = document.querySelector('ul').dataset.timeto;
   let timeuntil = new Date(timeto).getTime() + timevalid;
   let timenow = new Date().getTime();
