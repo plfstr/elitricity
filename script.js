@@ -19,6 +19,7 @@ let templ = generation => html`
 `;
 
 let fetchdata = async () => {
+  if (output.querySelector('ul') && fetchexpired() == false) return;
   const response = await fetch(
     "https://api.carbonintensity.org.uk/generation"
   ).catch(error => {
