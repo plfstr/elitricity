@@ -29,6 +29,7 @@ let fetchdata = async () => {
   });
   const data = await response.json();
   render(templ(data), output);
+  timeexpired = false;
   fetchagain();
 };
 
