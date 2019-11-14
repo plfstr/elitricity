@@ -28,6 +28,7 @@ let fetchdata = async () => {
   });
   const data = await response.json();
   render(templ(data), output);
+  fetchagain();
 };
 
 // Compare `generation.data.to` + timevalid, to `new Date`...
@@ -39,16 +40,17 @@ let fetchexpired = () => {
 }
 
 // Reresh data...
-let fetchagain = window.setTimeout(() => {
-  if (fetchexpired() === true) {
-    console.log('Data expired, fetching...');
-    fetchdata();
-    timeexpired = true;
-  } else {
-    timeexpired = false;
-  }
-  fetchagain;
-}, timevalid);
+function fetchagain() {
+  setTimeout(()=>{
+    if (fetchexpired() === true) {
+      fetchdata();
+      timeexpired = true;
+    } else {
+      timeexpired = false;
+    }
+    fetchagain();
+  }, timevalid);
+}
 
 fetchdata();
 
