@@ -15,11 +15,17 @@ let templ = generation => html`
 	`
   )}
 	</ul>
-  <p class="lowlight"><small>(Updated <time datetime="${generation.data.from}">${new Date(generation.data.from).toLocaleString("en-GB")}</time>)</small><button type="button" aria-controls="#output" @click=${fetchdata} ?hidden=${!timeexpired}>Refresh Data?</button></p>
+  <p class="lowlight"><small>(Updated <time datetime="${generation.data.from}">${new Date(generation.data.from).toLocaleString("en-GB")}</time>)</small><button type="button" aria-controls="#output" @click=${renderdata} ?hidden=${!timeexpired}>Refresh Data?</button></p>
 `;
 
-let fetchdata = async () => {
+function renderdata() {
   if (output.querySelector('ul') && fetchexpired() == false) return;
+  fetchdata();
+  timeexpired = false;
+  fetchagain();
+}
+
+let fetchdata = async () => {
   const response = await fetch(
     "https://api.carbonintensity.org.uk/generation"
   ).catch(error => {
@@ -29,8 +35,6 @@ let fetchdata = async () => {
   });
   const data = await response.json();
   render(templ(data), output);
-  timeexpired = false;
-  fetchagain();
 };
 
 // Compare `generation.data.to` + timevalid, to `new Date`...
@@ -54,7 +58,7 @@ function fetchagain() {
   }, timevalid);
 }
 
-fetchdata();
+renderdata();
 
 if ("serviceWorker" in navigator) {
   if (navigator.serviceWorker.controller) {
