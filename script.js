@@ -20,9 +20,7 @@ let init = async () => {
   const response = await fetch(
     "https://api.carbonintensity.org.uk/generation", {cache: 'no-store'}
   ).catch(error => {
-    document.querySelector(
-      "#output"
-    ).textContent = `Sorry, error fetching grid data [${error}]`;
+    output.textContent = `Sorry, error fetching grid data [${error}]`;
   });
   const data = await response.json();
   render(templ(data), output);
