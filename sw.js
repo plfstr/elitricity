@@ -15,6 +15,7 @@ const networkFirstPaths = [
   /* Add an array of regex of paths that should go network first */
   // Example: /\/api\/.*/
   '/^https\:\/\/unpkg\.com\/lit-html',
+  '/^https\:\/\/unpkg\.com\/page-lifecycle',
   '/https\:\/\/api\.carbonintensity\.org\.uk\/generation'
 ];
 
@@ -22,6 +23,7 @@ const avoidCachingPaths = [
   /* Add an array of regex of paths that shouldn't be cached */
   // Example: /\/api\/.*/
   '/^https\:\/\/unpkg\.com\/lit-html',
+  '/^https\:\/\/unpkg\.com\/page-lifecycle',
   '/https\:\/\/api\.carbonintensity\.org\.uk\/generation'
 ];
 
