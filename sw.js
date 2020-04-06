@@ -14,14 +14,12 @@ const offlineFallbackPage = "offline.html";
 const networkFirstPaths = [
   /* Add an array of regex of paths that should go network first */
   // Example: /\/api\/.*/
-  '/^https\:\/\/unpkg\.com\/lit-html/',
   '/https\:\/\/api\.carbonintensity\.org\.uk\/generation/'
 ];
 
 const avoidCachingPaths = [
   /* Add an array of regex of paths that shouldn't be cached */
   // Example: /\/api\/.*/
-  '/^https\:\/\/unpkg\.com\/lit-html/',
   '/https\:\/\/api\.carbonintensity\.org\.uk\/generation/'
 ];
 
