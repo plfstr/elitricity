@@ -17,8 +17,8 @@ function buildOutput(generation) {
   let domList = document.createElement('ul');
   let griddata = generation.data;
   let gridsources = griddata.generationmix;
-  for (source of gridsources) {
-    domList.innerHTML += buildList(source);
+  for (let eachsource of gridsources) {
+    domList.innerHTML += buildList(eachsource);
   };
   
   let domDatainfo = document.createElement('p');
