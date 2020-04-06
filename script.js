@@ -1,20 +1,33 @@
-import { html, render } from "https://unpkg.com/lit-html?module";
 
-let output = document.querySelector("#output");
+function buildList(source) {
+  return `
+      <li class="cover">
+        <h2>${source.fuel}</h2>
+        <p class="num">${source.perc}<small>%</small></p>
+      </li>
+    `;
+}
 
-let templ = generation => html`
-	<ul data-timeto=${generation.data.to}>
-	${generation.data.generationmix.map(
-    source => html`
-		<li class="cover ${source.fuel}">
-				<h2>${source.fuel}</h2>
-				<p class="num">${source.perc}<small>%</small></p>
-		</li>
-	`
-  )}
-	</ul>
-	<p class="lowlight"><small>(Updated <time datetime="${generation.data.from}">${new Date(generation.data.from).toLocaleString("en-GB")}</time>)</small></p>
-`;
+function buildOutput(generation) {
+  
+  let output = document.querySelector('#output');
+  
+  if(!output) return;
+  
+  let domList = document.createElement('ul');
+  let griddata = generation.data;
+  for (each of griddata.generationmix) {
+    domList.innerHTML += buildList(each);
+  };
+  
+  let domDatainfo = document.createElement('p');
+  domDatainfo.className = 'lowlight';
+  domDatainfo.textContent = `Updated ${new Date(griddata.to).toLocaleString("en-GB")}`;
+  
+  output.querySelector('.loader').setAttribute('hidden','');
+  domList.dataset.timeto = griddata.to;
+  output.append(domList, domDatainfo);
+}
 
 let init = async () => {
   const response = await fetch(
@@ -23,7 +36,7 @@ let init = async () => {
     output.textContent = `Sorry, error fetching grid data [${error}]`;
   });
   const data = await response.json();
-  render(templ(data), output);
+  buildOutput(data);
 };
 
 init();
