@@ -1,9 +1,28 @@
+const htmlEscapes = string => string
+.replace(/&/g, '&amp;')
+.replace(/"/g, '&quot;')
+.replace(/'/g, '&#39;')
+.replace(/</g, '&lt;')
+.replace(/>/g, '&gt;');
+
+const htmlEscape = (strings, ...values) => {
+	if (typeof strings === 'string') {
+		return htmlEscapes(strings);
+	}
+
+	let output = strings[0];
+	for (const [index, value] of values.entries()) {
+		output = output + htmlEscapes(String(value)) + strings[index + 1];
+	}
+
+	return output;
+};
 
 function buildList(source) {
   return `
       <li class="cover">
-        <h2>${source.fuel}</h2>
-        <p class="num">${source.perc}<small>%</small></p>
+        <h2>${htmlEscape(source.fuel)}</h2>
+        <p class="num">${typeof source.perc === 'number' && isFinite(source.perc) ? source.perc : '-'}<small>%</small></p>
       </li>
     `;
 }
@@ -26,7 +45,7 @@ function buildOutput(generation) {
   domDatainfo.textContent = `Updated ${new Date(griddata.to).toLocaleString("en-GB")}`;
   
   output.querySelector('.loader').setAttribute('hidden','');
-  domList.dataset.timeto = griddata.to;
+  domList.dataset.timeto = htmlEscape(griddata.to);
   output.append(domList, domDatainfo);
 }
 
