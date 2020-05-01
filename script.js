@@ -47,6 +47,7 @@ function buildOutput(generation) {
   domDatainfo.textContent = `Updated ${new Date(griddata.to).toLocaleString("en-GB")}`;
   
   output.querySelector('.loader').setAttribute('hidden','');
+  output.innerHTML = "";
   domList.dataset.timeto = htmlEscape(griddata.to);
   output.append(domList, domDatainfo);
 }
