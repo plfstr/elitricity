@@ -2,12 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self' https://www.unpkg.com; connect-src https://api.carbonintensity.org.uk; manifest-src 'self'; img-src 'self';">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; connect-src https://api.carbonintensity.org.uk; manifest-src 'self'; img-src 'self';">
 <title>UK E-Lit-tricity Grid</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="preload" href="https://api.carbonintensity.org.uk/generation" as="fetch" crossorigin="anonymous">
-<link rel="preload" href="https://www.unpkg.com/lit-html?module" as="script" crossorigin="anonymous">
-<link rel="preload" href="https://www.unpkg.com/page-lifecycle?module" as="script" crossorigin="anonymous">
 <script type="module" src="script.js"></script>
 <link rel="stylesheet" href="style.css">
 <link rel="manifest" href="manifest.json">
@@ -32,7 +30,7 @@
   </div>
 
   <aside>
-    <p>Using Lit-HTML with the <a href="https://carbonintensity.org.uk" target="_blank" rel="noopener">Carbon Intensity API</a> by National Grid</p>
+    <p>Using <strike>Lit-HTML</strike> plain JS with the <a href="https://carbonintensity.org.uk" target="_blank" rel="noopener">Carbon Intensity API</a> by National Grid</p>
   </aside>
   <footer><p class="lowlight">By <a href="https://github.com/plfstr" target="_blank" rel="noopener">plfstr</a></p></footer>
 </main>

@@ -1,22 +1,53 @@
-import { html, render } from "https://www.unpkg.com/lit-html?module";
-import lifecycle from "https://www.unpkg.com/page-lifecycle?module";
+const htmlEscapes = string => string
+.replace(/&/g, '&amp;')
+.replace(/"/g, '&quot;')
+.replace(/'/g, '&#39;')
+.replace(/</g, '&lt;')
+.replace(/>/g, '&gt;');
 
-let output = document.querySelector("#output");
-let timevalid = 1000*60*32;
+const htmlEscape = (strings, ...values) => {
+	if (typeof strings === 'string') {
+		return htmlEscapes(strings);
+	}
 
-let templ = generation => html`
-	<ul data-timeto=${generation.data.to}>
-	${generation.data.generationmix.map(
-    source => html`
-		<li class="cover ${source.fuel}">
-				<h2>${source.fuel}</h2>
-				<p class="num">${source.perc}<small>%</small></p>
-		</li>
-	`
-  )}
-	</ul>
-	<p class="lowlight"><small>(Updated <time datetime="${generation.data.from}">${new Date(generation.data.from).toLocaleString("en-GB")}</time>)</small></p>
-`;
+	let output = strings[0];
+	for (const [index, value] of values.entries()) {
+		output = output + htmlEscapes(String(value)) + strings[index + 1];
+	}
+
+	return output;
+};
+
+function buildList(source) {
+  return `
+      <li class="cover">
+        <h2>${htmlEscape(source.fuel)}</h2>
+        <p class="num">${typeof source.perc === 'number' && isFinite(source.perc) ? source.perc : '-'}<small>%</small></p>
+      </li>
+    `;
+}
+
+function buildOutput(generation) {
+  
+  let output = document.querySelector('#output');
+  
+  if(!output) return;
+  
+  let domList = document.createElement('ul');
+  let griddata = generation.data;
+  let gridsources = griddata.generationmix;
+  for (let eachsource of gridsources) {
+    domList.innerHTML += buildList(eachsource);
+  };
+  
+  let domDatainfo = document.createElement('p');
+  domDatainfo.className = 'lowlight';
+  domDatainfo.textContent = `Updated ${new Date(griddata.to).toLocaleString("en-GB")}`;
+  
+  output.querySelector('.loader').setAttribute('hidden','');
+  domList.dataset.timeto = htmlEscape(griddata.to);
+  output.append(domList, domDatainfo);
+}
 
 function renderdata() {
   if (!fetchexpired()) return;
@@ -31,7 +62,7 @@ let fetchdata = async () => {
     output.textContent = `Sorry, error fetching grid data [${error}]`;
   });
   const data = await response.json();
-  render(templ(data), output);
+  buildOutput(data);
 };
 
 function fetchexpired() {
