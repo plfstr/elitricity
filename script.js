@@ -1,3 +1,5 @@
+import lifecycle from './lifecycle.mjs';
+
 const htmlEscapes = string => string
 .replace(/&/g, '&amp;')
 .replace(/"/g, '&quot;')
@@ -32,7 +34,7 @@ function buildOutput(generation) {
   let output = document.querySelector('#output');
   
   if(!output) return;
-  
+
   let domList = document.createElement('ul');
   let griddata = generation.data;
   let gridsources = griddata.generationmix;
@@ -74,7 +76,7 @@ function fetchexpired() {
 
 if (lifecycle) {
   lifecycle.addEventListener('statechange', (event) => {
-      if (event.oldState === 'hidden' && event.newState === 'passive') {
+    if (event.oldState === 'hidden' && event.newState === 'passive') {
           renderdata();
       }
   });
