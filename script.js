@@ -68,6 +68,7 @@ let fetchdata = async () => {
 };
 
 function fetchexpired() {
+  let timevalid = 1000*60*32;
   let timeto = document.querySelector('ul').dataset.timeto;
   let timeuntil = new Date(timeto).getTime() + timevalid;
   let timenow = new Date().getTime();
