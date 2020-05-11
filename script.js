@@ -59,12 +59,12 @@ function renderdata() {
 }
 
 let fetchdata = async () => {
-  const response = await fetch(
+  let response = await fetch(
     "https://api.carbonintensity.org.uk/generation", {cache: 'no-store'}
   ).catch(error => {
     output.textContent = `Sorry, error fetching grid data [${error}]`;
   });
-  const data = await response.json();
+  let data = await response.json();
   buildOutput(data);
 };
 
