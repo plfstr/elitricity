@@ -93,7 +93,7 @@ footer p {
   box-decoration-break: clone;
 }
 
-#output {
+.data {
   display: block;
   margin: -1.25em auto;
   padding: 1.5em 0;

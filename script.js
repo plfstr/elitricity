@@ -1,5 +1,8 @@
 import lifecycle from './lifecycle.mjs';
 
+let output = document.querySelector('#output');
+let loader = document.querySelector('.loader');
+
 const htmlEscapes = string => string
 .replace(/&/g, '&amp;')
 .replace(/"/g, '&quot;')
@@ -31,8 +34,6 @@ function buildList(source) {
 
 function buildOutput(generation) {
   
-  let output = document.querySelector('#output');
-  
   if(!output) return;
 
   let domList = document.createElement('ul');
@@ -46,15 +47,21 @@ function buildOutput(generation) {
   domDatainfo.className = 'lowlight';
   domDatainfo.textContent = `Updated ${new Date(griddata.to).toLocaleString("en-GB")}`;
   
-  output.querySelector('.loader').setAttribute('hidden','');
+  loader.setAttribute('hidden','');
   output.innerHTML = "";
   domList.dataset.timeto = htmlEscape(griddata.to);
   output.append(domList, domDatainfo);
 }
 
+function resetdata() {
+  output.innerHTML = "";
+  loader.removeAttribute('hidden');
+}
+
 function renderdata() {
   if (!fetchexpired()) return;
   if (!confirm('Newest data available! Refresh data?')) return;
+  resetdata();
   fetchdata();
 }
 
@@ -62,6 +69,7 @@ let fetchdata = async () => {
   let response = await fetch(
     "https://api.carbonintensity.org.uk/generation", {cache: 'no-store'}
   ).catch(error => {
+    resetdata();
     output.textContent = `Sorry, error fetching grid data [${error}]`;
   });
   let data = await response.json();
