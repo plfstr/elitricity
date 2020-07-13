@@ -1,32 +1,13 @@
+import DOMPurify from './purify.min.js';
 import lifecycle from './lifecycle.mjs';
 
 let output = document.querySelector('#output');
 let loader = document.querySelector('.loader');
 
-const htmlEscapes = string => string
-.replace(/&/g, '&amp;')
-.replace(/"/g, '&quot;')
-.replace(/'/g, '&#39;')
-.replace(/</g, '&lt;')
-.replace(/>/g, '&gt;');
-
-const htmlEscape = (strings, ...values) => {
-	if (typeof strings === 'string') {
-		return htmlEscapes(strings);
-	}
-
-	let output = strings[0];
-	for (const [index, value] of values.entries()) {
-		output = output + htmlEscapes(String(value)) + strings[index + 1];
-	}
-
-	return output;
-};
-
 function buildList(source) {
   return `
       <li class="cover">
-        <h2>${htmlEscape(source.fuel)}</h2>
+        <h2>${DOMPurify.sanitize(source.fuel)}</h2>
         <p class="num">${typeof source.perc === 'number' && isFinite(source.perc) ? source.perc : '-'}<small>%</small></p>
       </li>
     `;
@@ -49,7 +30,7 @@ function buildOutput(generation) {
   
   loader.setAttribute('hidden','');
   output.innerHTML = "";
-  domList.dataset.timeto = htmlEscape(griddata.to);
+  domList.dataset.timeto = DOMPurify.sanitize(griddata.to);
   output.append(domList, domDatainfo);
 }
 
