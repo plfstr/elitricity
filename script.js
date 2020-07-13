@@ -1,4 +1,4 @@
-import DOMPurify from './purify.min.js';
+import DOMPurify from './purify.es.js';
 import lifecycle from './lifecycle.mjs';
 
 let output = document.querySelector('#output');

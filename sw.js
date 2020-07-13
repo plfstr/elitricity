@@ -4,7 +4,7 @@ const precacheFiles = [
   'index.html',
   'style.css',
   'script.js',
-  'purify.min.js',
+  'purify.es.js',
   'lifecycle.mjs',
   'manifest.json',
   'offline.html'
