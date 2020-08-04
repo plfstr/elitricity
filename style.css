@@ -65,18 +65,15 @@ a {
   margin: auto;
 }
 
-h2 {
+.cover {
   text-transform: capitalize;
-  font-weight: normal;
-  display: inline-block;
-  margin: 0;
-  border-bottom: 2px solid var(--col-lowlight);
 }
 
 .num {
-  margin: 0;
+  display: block;
   font-weight: bold;
-  font-size: 1.875em;
+  font-size: 1.125em;
+  border-top: 2px solid var(--col-lowlight);
 }
 
 .lowlight {
