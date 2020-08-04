@@ -4,15 +4,6 @@ import lifecycle from './lifecycle.mjs';
 let output = document.querySelector('#output');
 let loader = document.querySelector('.loader');
 
-function buildList(source) {
-  return `
-      <li class="cover">
-        <h2>${DOMPurify.sanitize(source.fuel)}</h2>
-        <p class="num">${typeof source.perc === 'number' && isFinite(source.perc) ? source.perc : '-'}<small>%</small></p>
-      </li>
-    `;
-}
-
 function buildOutput(generation) {
   
   if(!output) return;
@@ -20,8 +11,9 @@ function buildOutput(generation) {
   let domList = document.createElement('ul');
   let griddata = generation.data;
   let gridsources = griddata.generationmix;
+
   for (let eachsource of gridsources) {
-    domList.innerHTML += buildList(eachsource);
+    domList.innerHTML += DOMPurify.sanitize(`<li class="cover">${eachsource.fuel} <span class="num">${eachsource.perc}%</span></li>`);
   };
   
   let domDatainfo = document.createElement('p');
