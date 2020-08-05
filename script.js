@@ -13,7 +13,7 @@ function buildOutput(generation) {
   let gridsources = griddata.generationmix;
 
   for (let eachsource of gridsources) {
-    domList.innerHTML += DOMPurify.sanitize(`<li class="cover">${eachsource.fuel} <span class="num">${eachsource.perc}%</span></li>`);
+    domList.innerHTML += DOMPurify.sanitize(`<li class="cover">${eachsource.fuel} <span class="num">${eachsource.perc}%</span></li>`, {RETURN_TRUSTED_TYPE: true});
   };
   
   let domDatainfo = document.createElement('p');
