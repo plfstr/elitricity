@@ -1,6 +1,20 @@
 import DOMPurify from './purify.es.js';
 import lifecycle from './lifecycle.mjs';
 
+if (window.trustedTypes && trustedTypes.createPolicy) {
+  const isTrusted = trustedTypes.createPolicy('elitPolicy', {
+    createHTML: (string, sink) => DOMPurify.sanitize(string, {RETURN_TRUSTED_TYPE: true});
+  });
+}
+
+function santiseMarkup(thisMarkup) {
+  if (isTrusted) {
+    return isTrusted.createHTML(thisMarkup);
+  } else {
+    return DOMPurify.sanitize(thisMarkup);
+  }
+}
+
 let output = document.querySelector('#output');
 let loader = document.querySelector('.loader');
 
@@ -13,7 +27,7 @@ function buildOutput(generation) {
   let gridsources = griddata.generationmix;
 
   for (let eachsource of gridsources) {
-    domList.innerHTML += DOMPurify.sanitize(`<li class="cover">${eachsource.fuel} <span class="num">${eachsource.perc}%</span></li>`, {RETURN_TRUSTED_TYPE: true});
+    domList.innerHTML += santiseMarkup(`<li class="cover">${eachsource.fuel} <span class="num">${eachsource.perc}%</span></li>`);
   };
   
   let domDatainfo = document.createElement('p');
