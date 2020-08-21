@@ -1,20 +1,6 @@
 import DOMPurify from './purify.es.js';
 import lifecycle from './lifecycle.mjs';
 
-if (window.trustedTypes && trustedTypes.createPolicy) {
-  const isTrusted = trustedTypes.createPolicy('elitPolicy', {
-    createHTML: (string, sink) => DOMPurify.sanitize(string, {RETURN_TRUSTED_TYPE: true});
-  });
-}
-
-function santiseMarkup(thisMarkup) {
-  if (isTrusted) {
-    return isTrusted.createHTML(thisMarkup);
-  } else {
-    return DOMPurify.sanitize(thisMarkup);
-  }
-}
-
 let output = document.querySelector('#output');
 let loader = document.querySelector('.loader');
 
@@ -25,9 +11,13 @@ function buildOutput(generation) {
   let domList = document.createElement('ul');
   let griddata = generation.data;
   let gridsources = griddata.generationmix;
+  const isTrusted = trustedTypes.createPolicy('elitPolicy', {
+    createHTML: (string, sink) => DOMPurify.sanitize(string, {RETURN_TRUSTED_TYPE: true});
+  });
 
   for (let eachsource of gridsources) {
-    domList.innerHTML += santiseMarkup(`<li class="cover">${eachsource.fuel} <span class="num">${eachsource.perc}%</span></li>`);
+    let sanitisedMarkup = isTrusted.createHTML(`<li class="cover">${eachsource.fuel} <span class="num">${eachsource.perc}%</span></li>`);
+    domList.innerHTML += sanitisedMarkup;
   };
   
   let domDatainfo = document.createElement('p');
@@ -36,7 +26,7 @@ function buildOutput(generation) {
   
   loader.setAttribute('hidden','');
   output.innerHTML = "";
-  domList.dataset.timeto = DOMPurify.sanitize(griddata.to);
+  domList.dataset.timeto = isTrusted.createHTML(griddata.to);
   output.append(domList, domDatainfo);
 }
 
