@@ -6,6 +6,7 @@ const precacheFiles = [
   'script.js',
   'purify.es.js',
   'lifecycle.mjs',
+  'polyfill-trustedtypes.js',
   'manifest.json',
   'offline.html'
 ];
