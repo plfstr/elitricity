@@ -20,15 +20,14 @@ function buildOutput(generation) {
   domDatainfo.className = 'lowlight';
   domDatainfo.textContent = `Updated ${new Date(griddata.to).toLocaleString("en-GB")}`;
   
-  loader.setAttribute('hidden','');
-  output.innerHTML = "";
+  resetdata();
   domList.dataset.timeto = DOMPurify.sanitize(griddata.to);
   output.append(domList, domDatainfo);
 }
 
 function resetdata() {
   output.innerHTML = "";
-  loader.removeAttribute('hidden');
+  loader.toggleAttribute('hidden');
 }
 
 function renderdata() {
