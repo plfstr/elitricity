@@ -145,3 +145,22 @@ footer p {
     transform: scaleY(1.375);
   }
 }
+
+[data-a11y-dialog-native] > :first-child {
+  display: none;
+}
+
+dialog[open] {
+  display: block;
+}
+
+.dialog-container[aria-hidden='true'] {
+  display: none;
+}
+
+.dialog-container {
+  position: absolute;
+  background-color: var(--col-body);
+  color: var(--col-background);
+  border: .5em solid var(--col-background);
+}

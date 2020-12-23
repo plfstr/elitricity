@@ -1,5 +1,6 @@
 import DOMPurify from './purify.es.js';
 import lifecycle from './lifecycle.mjs';
+import './a11y-dialog.min.js';
 
 let output = document.querySelector('#output');
 let loader = document.querySelector('.loader');
@@ -32,9 +33,8 @@ function resetdata() {
 
 function renderdata() {
   if (!fetchexpired()) return;
-  if (!confirm('Newest data available! Refresh data?')) return;
-  resetdata();
-  fetchdata();
+  // Need to watch the Yes button to trigger data refresh...
+  dialog.show();
 }
 
 let fetchdata = async () => {
@@ -82,3 +82,11 @@ if ("serviceWorker" in navigator) {
       });
   }
 }
+
+// Get the dialog element (with the accessor method you want)
+const el = document.getElementById('my-accessible-dialog');
+
+// Instantiate a new A11yDialog module
+const dialog = new A11yDialog(el);
+
+// dialog.show();
