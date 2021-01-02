@@ -28,9 +28,11 @@ function buildOutput(generation) {
 function resetdata() {
   output.innerHTML = "";
   loader.toggleAttribute('hidden');
-  navigator.clearAppBadge().catch((error) => {
-    console.error(error);
-  });
+  if (navigator.clearAppBadge) {
+    navigator.clearAppBadge().catch((error) => {
+      console.error(error);
+    });
+  }
 }
 
 function renderdata() {
@@ -56,10 +58,12 @@ function fetchexpired() {
   let timeto = document.querySelector('ul').dataset.timeto;
   let timeuntil = new Date(timeto).getTime() + timevalid;
   let timenow = new Date().getTime();
-  if (timenow > timeuntil) {
-    navigator.setAppBadge().catch((error) => {
-      console.error(error);
-    });
+  if (navigator.setAppBadge) {
+    if (timenow > timeuntil) {
+      navigator.setAppBadge().catch((error) => {
+        console.error(error);
+      });
+    }
   }
   return timenow > timeuntil;
 }
