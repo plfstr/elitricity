@@ -19,6 +19,13 @@ function buildOutput(generation) {
   let domDatainfo = document.createElement('p');
   domDatainfo.className = 'lowlight';
   domDatainfo.textContent = `Updated ${new Date(griddata.to).toLocaleString("en-GB")}`;
+
+  let domSynclabel = document.createElement('label');
+  domSynclabel.textContent = "Auto-update?";
+  let domSynctick = document.createElement('input');
+  domSynctick.type = "checkbox";
+  domSynclabel.appendChild(domSynctick);
+  domDatainfo.appendChild(domSynclabel);
   
   resetdata();
   domList.dataset.timeto = DOMPurify.sanitize(griddata.to);
