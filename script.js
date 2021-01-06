@@ -18,7 +18,7 @@ function buildOutput(generation) {
   
   let domDatainfo = document.createElement('p');
   domDatainfo.className = 'lowlight';
-  domDatainfo.textContent = `Updated ${new Intl.DateTimeFormat('en-GB', {month:"2-digit",year:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",hourCycle:"h24"}).format(new Date(griddata.to))}`;
+  domDatainfo.textContent = `Updated ${new Intl.DateTimeFormat('en-GB',{month:"2-digit",year:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",hourCycle:"h23"}).format(new Date(griddata.to))}`;
   
   resetdata();
   domList.dataset.timeto = DOMPurify.sanitize(griddata.to);
