@@ -4,24 +4,22 @@ import lifecycle from './lifecycle.mjs';
 let output = document.querySelector('#output');
 let loader = document.querySelector('.loader');
 
-function buildOutput(generation) {
+function buildOutput({data:{to,generationmix}}) {
   
   if(!output) return;
 
   let domList = document.createElement('ul');
-  let griddata = generation.data;
-  let gridsources = griddata.generationmix;
 
-  for (let eachsource of gridsources) {
-    domList.innerHTML += DOMPurify.sanitize(`<li class="cover">${eachsource.fuel} <span class="num">${eachsource.perc}%</span></li>`);
+  for (let {fuel, perc} of generationmix) {
+    domList.innerHTML += DOMPurify.sanitize(`<li class="cover">${fuel} <span class="num">${perc}%</span></li>`);
   };
   
   let domDatainfo = document.createElement('p');
   domDatainfo.className = 'lowlight';
-  domDatainfo.textContent = `Updated ${new Intl.DateTimeFormat('en-GB',{month:"2-digit",year:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",hourCycle:"h23"}).format(new Date(griddata.to))}`;
+  domDatainfo.textContent = `Updated ${new Intl.DateTimeFormat('en-GB',{month:"2-digit",year:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",hourCycle:"h23"}).format(new Date(to))}`;
   
   resetdata();
-  domList.dataset.timeto = DOMPurify.sanitize(griddata.to);
+  domList.dataset.timeto = DOMPurify.sanitize(to);
   output.append(domList, domDatainfo);
 }
 
