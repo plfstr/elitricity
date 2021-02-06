@@ -80,6 +80,7 @@ a {
 
 .lowlight {
   color: var(--col-lowlight);
+  border-radius: .75em;
 }
 
 header p,
@@ -99,6 +100,24 @@ footer p {
   padding: 1.5em 0;
   border-top: 2px solid var(--col-lowlight);
   border-bottom: 2px solid var(--col-lowlight);
+}
+
+.invert{
+  background-color: var(--col-lowlight);
+  color: var(--col-background);
+}
+
+button {
+  background-color: transparent;
+  -webkit-appearance: button;
+  appearance: button;
+  border: 3px double currentcolor;
+  background-color: var(--col-background);
+  color: var(--col-lowlight);
+  padding: .25em .75em;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: initial;
 }
 
 .loader,

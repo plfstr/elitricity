@@ -35,9 +35,7 @@ function resetdata() {
 
 function renderdata() {
   if (!fetchexpired()) return;
-  if (!confirm('Newest data available! Refresh data?')) return;
-  resetdata();
-  fetchdata();
+  createrefresh();
 }
 
 let fetchdata = async () => {
@@ -64,6 +62,32 @@ function fetchexpired() {
     }
   }
   return timenow > timeuntil;
+}
+
+function createrefresh() {
+  let details = document.querySelector('p.lowlight');
+  if (details.classList.contains('has-refresh')) return;
+    details.textContent += " - New grid data available!"
+    details.classList.add('has-refresh');
+  let domRefresh = document.createElement('button');
+    domRefresh.value = "Refresh";
+    domRefresh.textContent = "Refresh Data";
+    domRefresh.class = "invert";
+    details.appendChild(domRefresh);
+  if (document.querySelector('button')) {
+    domRefresh.addEventListener('click', refreshdata, {once: true});
+  }
+}
+
+function removerefresh() {
+  document.querySelector('button').remove();
+  document.querySelector('p.lowlight').classList.remove('has-refresh');
+}
+
+function refreshdata() {
+  removerefresh();
+  resetdata();
+  fetchdata();
 }
 
 if (lifecycle) {
