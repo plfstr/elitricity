@@ -40,7 +40,7 @@ function renderdata() {
 
 let fetchdata = async () => {
   let response = await fetch(
-    "https://api.carbonintensity.org.uk/generation", {cache: 'no-store'}
+    'https://api.carbonintensity.org.uk/generation', {cache: 'reload'}
   ).catch(error => {
     resetdata();
     output.textContent = `Sorry, error fetching grid data [${error}]`;
