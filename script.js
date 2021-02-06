@@ -56,7 +56,9 @@ function fetchexpired() {
 
 function createrefresh() {
   let details = document.querySelector('p.lowlight');
+  if (details.classList.contains('has-refresh')) return;
     details.textContent += " - New grid data available!"
+    details.classList.add('has-refresh');
   let domRefresh = document.createElement('button');
     domRefresh.value = "Refresh";
     domRefresh.textContent = "Refresh Data";
@@ -69,7 +71,7 @@ function createrefresh() {
 
 function removerefresh() {
   document.querySelector('button').remove();
-  document.querySelector('p.lowlight').classList.remove('invert');
+  document.querySelector('p.lowlight').classList.remove('has-refresh');
 }
 
 function refreshdata() {
