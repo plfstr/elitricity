@@ -56,11 +56,11 @@ function fetchexpired() {
 
 function createrefresh() {
   let details = document.querySelector('p.lowlight');
-    details.classList.add('invert');
     details.textContent += " - New grid data available!"
   let domRefresh = document.createElement('button');
     domRefresh.value = "Refresh";
-    domRefresh.textContent = "Refresh Data"
+    domRefresh.textContent = "Refresh Data";
+    domRefresh.class = "invert";
     details.appendChild(domRefresh);
   if (document.querySelector('button')) {
     domRefresh.addEventListener('click', refreshdata, {once: true});
