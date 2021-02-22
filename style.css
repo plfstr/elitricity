@@ -6,9 +6,8 @@
 
 @media only screen and (prefers-color-scheme: dark) {
   :root {
-    --col-body: #ccc;
-    --col-background: #0e3022;
-    --col-lowlight: #1c5d43;
+    --col-body: #ddd;
+    --col-background: #136041;
   }
 }
 
