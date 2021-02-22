@@ -98,7 +98,7 @@ if (lifecycle) {
   });
 }
 
-fetchdata();
+document.addEventListener('DOMContentLoaded', fetchdata, false);
 
 if ("serviceWorker" in navigator) {
   if (navigator.serviceWorker.controller) {
