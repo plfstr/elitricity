@@ -75,7 +75,7 @@ a {
   display: block;
   font-weight: bold;
   font-size: 1.125em;
-  border-top: 2px solid var(--col-lowlight);
+  border-top: .1875rem double var(--col-lowlight);
 }
 
 .lowlight {
@@ -96,10 +96,10 @@ footer p {
 
 .data {
   display: block;
-  margin: -1.25em auto;
+  margin: -1.125em auto;
   padding: 1.5em 0;
-  border-top: 2px solid var(--col-lowlight);
-  border-bottom: 2px solid var(--col-lowlight);
+  border-top: .1875rem double var(--col-lowlight);
+  border-bottom: .1875rem double var(--col-lowlight);
 }
 
 .invert{
@@ -111,7 +111,7 @@ button {
   background-color: transparent;
   -webkit-appearance: button;
   appearance: button;
-  border: 3px double currentcolor;
+  border: .1875rem double currentcolor;
   background-color: var(--col-background);
   color: var(--col-lowlight);
   padding: .25em .75em;
