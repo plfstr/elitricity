@@ -4,12 +4,17 @@ import lifecycle from './lifecycle.mjs';
 let output = document.querySelector('#output');
 let loader = document.querySelector('.loader');
 
-function buildOutput({data:{to,generationmix}}) {
+function buildOutput(generation) {
   
   if(!output) return;
 
+  let {
+    data:{
+      to,
+      generationmix
+    }
+  } = generation;
   let domList = document.createElement('ul');
-
   for (let {fuel, perc} of generationmix) {
     domList.innerHTML += DOMPurify.sanitize(`<li class="cover">${fuel} <span class="num">${perc}%</span></li>`);
   };
