@@ -8,25 +8,31 @@ function buildOutput(generation) {
   
   if(!output) return;
 
-  let {
-    data:{
-      to,
-      generationmix
-    }
-  } = generation;
-  let domList = document.createElement('ul');
-  for (let {fuel, perc} of generationmix) {
-    domList.innerHTML += DOMPurify.sanitize(`<li class="cover">${fuel} <span class="num">${perc}%</span></li>`);
-  };
-  
-  let domDataoptions = {month:"2-digit",year:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",hourCycle:"h23"};
-  let domDatainfo = document.createElement('p');
-  domDatainfo.className = 'lowlight';
-  domDatainfo.textContent = `Updated ${new Intl.DateTimeFormat('en-GB',domDataoptions).format(new Date(to))}`;
-  
-  resetdata();
-  domList.dataset.timeto = DOMPurify.sanitize(to);
-  output.append(domList, domDatainfo);
+  try {
+    let {
+      data:{
+        to,
+        generationmix
+      }
+    } = generation;
+    let domList = document.createElement('ul');
+    for (let {fuel, perc} of generationmix) {
+      domList.innerHTML += DOMPurify.sanitize(`<li class="cover">${fuel} <span class="num">${perc}%</span></li>`);
+    };
+    
+    let domDataoptions = {month:"2-digit",year:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",hourCycle:"h23"};
+    let domDatainfo = document.createElement('p');
+    domDatainfo.className = 'lowlight';
+    domDatainfo.textContent = `Updated ${new Intl.DateTimeFormat('en-GB',domDataoptions).format(new Date(to))}`;
+    
+    resetdata();
+    domList.dataset.timeto = DOMPurify.sanitize(to);
+    output.append(domList, domDatainfo);
+  } 
+  catch(error) {
+    resetdata();
+    output.textContent = `Sorry, error generating grid data (${error.name})`;
+  }
 }
 
 function resetdata() {
@@ -46,7 +52,7 @@ function renderdata() {
 
 let fetchdata = async () => {
   let response = await fetch(
-    'https://api.carbonintensity.org.uk/generation', {cache: 'reload'}
+    'https://api.carbonintensity.org.uk/generatiodn', {cache: 'reload'}
   ).catch(error => {
     resetdata();
     output.textContent = `Sorry, error fetching grid data [${error}]`;
