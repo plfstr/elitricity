@@ -14,9 +14,10 @@ function buildOutput({data:{to,generationmix}}) {
     domList.innerHTML += DOMPurify.sanitize(`<li class="cover">${fuel} <span class="num">${perc}%</span></li>`);
   };
   
+  let domDataoptions = {month:"2-digit",year:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",hourCycle:"h23"};
   let domDatainfo = document.createElement('p');
   domDatainfo.className = 'lowlight';
-  domDatainfo.textContent = `Updated ${new Intl.DateTimeFormat('en-GB',{month:"2-digit",year:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",hourCycle:"h23"}).format(new Date(to))}`;
+  domDatainfo.textContent = `Updated ${new Intl.DateTimeFormat('en-GB',domDataoptions).format(new Date(to))}`;
   
   resetdata();
   domList.dataset.timeto = DOMPurify.sanitize(to);
