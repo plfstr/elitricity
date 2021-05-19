@@ -8,8 +8,7 @@ function buildOutput(generation) {
   
   if(!output) return;
 
-  try {
-    let {
+   let {
       data:{
         to,
         generationmix
@@ -28,11 +27,7 @@ function buildOutput(generation) {
     resetdata();
     domList.dataset.timeto = DOMPurify.sanitize(to);
     output.append(domList, domDatainfo);
-  } 
-  catch(error) {
-    resetdata();
-    output.textContent = `Sorry, error generating grid data (${error.name})`;
-  }
+  
 }
 
 function resetdata() {
@@ -58,7 +53,13 @@ let fetchdata = async () => {
     output.textContent = `Sorry, error fetching grid data [${error}]`;
   });
   let data = await response.json();
-  buildOutput(data);
+  try {
+    buildOutput(data);
+  } 
+  catch(error) {
+    resetdata();
+    output.textContent = `Sorry, error generating grid data (${error.name})`;
+  }
 };
 
 function fetchexpired() {
