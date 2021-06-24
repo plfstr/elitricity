@@ -42,7 +42,14 @@ function resetdata() {
 
 function renderdata() {
   if (!fetchexpired()) return;
-  createrefresh();
+  if (fetchexpired()) {
+      createrefresh();
+      if (navigator.setAppBadge) {
+      navigator.setAppBadge().catch((error) => {
+        console.error(error);
+      });
+    }
+  }
 }
 
 let fetchdata = async () => {
@@ -67,13 +74,6 @@ function fetchexpired() {
   let timeto = document.querySelector('ul').dataset.timeto;
   let timeuntil = new Date(timeto).getTime() + timevalid;
   let timenow = new Date().getTime();
-  if (navigator.setAppBadge) {
-    if (timenow > timeuntil) {
-      navigator.setAppBadge().catch((error) => {
-        console.error(error);
-      });
-    }
-  }
   return timenow > timeuntil;
 }
 
