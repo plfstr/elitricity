@@ -105,7 +105,7 @@ function refreshdata() {
 
 if (lifecycle) {
   lifecycle.addEventListener('statechange', (event) => {
-    if (event.oldState === 'frozen' && event.newState === 'passive' || event.oldState === 'hidden' && event.newState === 'passive') {
+    if (event.oldState === 'frozen' || 'hidden' && event.newState === 'active' || 'passive') {
           renderdata();
       }
   });
