@@ -1,9 +1,16 @@
+// @ts-check
 import DOMPurify from './purify.es.js';
 import lifecycle from './lifecycle.mjs';
 
+/** @type {HTMLElement} */
 let output = document.querySelector('#output');
+/** @type {HTMLElement} */
 let loader = document.querySelector('.loader');
 
+/**
+ * @function buildOutput - Build generation DOM
+ * @param {object} generation
+ */
 function buildOutput(generation) {
   
   if(!output) return;
@@ -29,12 +36,20 @@ function buildOutput(generation) {
     output.append(domList, domDatainfo);
     
 }
-  
+ 
+/**
+ * @function makedate - Returns a date
+ * @param {date} date 
+ * @returns {date}
+ */
 function makedate(date) {
   let options = {month:"2-digit",year:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",hourCycle:"h23"};
   return new Intl.DateTimeFormat('en-GB', options).format(new Date(date));
 }
 
+/**
+ * @function resetdata - reset the output DOM
+ */
 function resetdata() {
   output.innerHTML = "";
   loader.toggleAttribute('hidden');
@@ -45,6 +60,9 @@ function resetdata() {
   }
 }
 
+/**
+ * @function renderdata - Renders the data
+ */
 function renderdata() {
   if (!fetchexpired()) return;
   if (fetchexpired()) {
@@ -57,6 +75,7 @@ function renderdata() {
   }
 }
 
+/** @type {function} fetchdata */
 let fetchdata = async () => {
   let response = await fetch(
     'https://api.carbonintensity.org.uk/generation', {cache: 'reload'}
@@ -74,6 +93,10 @@ let fetchdata = async () => {
   }
 };
 
+/**
+ * @function fetchexpired - Test to check if date now is later than data timeto
+ * @returns {boolean}
+ */
 function fetchexpired() {
   let timevalid = 1000*60*32;
   let timeto = document.querySelector('ul').dataset.timeto;
@@ -82,6 +105,9 @@ function fetchexpired() {
   return timenow > timeuntil;
 }
 
+/**
+ * @function createrefresh - Insert button to refresh if data expired
+ */
 function createrefresh() {
   let details = document.querySelector('p.lowlight');
   if (details.classList.contains('has-refresh')) return;
@@ -97,11 +123,17 @@ function createrefresh() {
   }
 }
 
+/**
+ * @function removerefresh
+ */
 function removerefresh() {
   document.querySelector('button').remove();
   document.querySelector('p.lowlight').classList.remove('has-refresh');
 }
 
+/**
+ * @function refreshdata - Remove refresh button, reset data DOM, fetch new data
+ */
 function refreshdata() {
   removerefresh();
   resetdata();
