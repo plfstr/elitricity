@@ -17,7 +17,7 @@ function buildOutput(generation) {
     
     let domList = document.createElement('ul');
     for (let {fuel, perc} of generationmix) {
-      domList.innerHTML += DOMPurify.sanitize(`<li class="cover">${fuel} <span class="num">${perc}%</span></li>`);
+      domList.innerHTML += DOMPurify.sanitize(`<li class="cover">${fuel} <span class="num">${perc}%</span></li>`, {RETURN_TRUSTED_TYPE: true});
     };
     
     let domDatainfo = document.createElement('p');
@@ -25,7 +25,7 @@ function buildOutput(generation) {
     domDatainfo.textContent = `Updated ${makedate(to)}`;
     
     resetdata();
-    domList.dataset.timeto = DOMPurify.sanitize(to);
+    domList.dataset.timeto = DOMPurify.sanitize(to, {RETURN_TRUSTED_TYPE: true});
     output.append(domList, domDatainfo);
     
 }
