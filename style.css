@@ -69,6 +69,7 @@ a {
 }
 
 .cover {
+  contain: content;
   font-size: 1.5em;
   text-transform: capitalize;
 }
