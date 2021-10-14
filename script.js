@@ -46,6 +46,7 @@ function resetdata() {
 }
 
 function renderdata() {
+  if (output.innerHTML === undefined) {fetchdata()};
   if (!fetchexpired()) return;
   if (fetchexpired()) {
       createrefresh();
@@ -116,7 +117,7 @@ if (lifecycle) {
   });
 }
 
-document.addEventListener('DOMContentLoaded', fetchdata, false);
+document.addEventListener('DOMContentLoaded', renderdata(), false);
 
 if ("serviceWorker" in navigator) {
   if (navigator.serviceWorker.controller) {
