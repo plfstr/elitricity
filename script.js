@@ -46,11 +46,11 @@ function resetdata() {
 }
 
 function renderdata() {
-  if (output.innerHTML === undefined) {fetchdata()};
-  if (!fetchexpired()) return;
-  if (fetchexpired()) {
-      createrefresh();
-      if (navigator.setAppBadge) {
+  if (output.innerHTML === "") {
+    fetchdata();
+  } else if (fetchexpired()) {
+    createrefresh();
+    if (navigator.setAppBadge) {
       navigator.setAppBadge().catch((error) => {
         console.error(error);
       });
