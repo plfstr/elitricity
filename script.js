@@ -1,5 +1,5 @@
-import DOMPurify from './purify.es.js';
-import lifecycle from './lifecycle.mjs';
+import DOMPurify from 'dompurify';
+import lifecycle from 'page-lifecycle';
 
 let output = document.querySelector('#output');
 let loader = document.querySelector('.loader');
