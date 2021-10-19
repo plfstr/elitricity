@@ -1,6 +1,8 @@
 import DOMPurify from 'dompurify';
 import lifecycle from 'page-lifecycle';
 
+import "./style.css";
+
 let output = document.querySelector('#output');
 let loader = document.querySelector('.loader');
 
