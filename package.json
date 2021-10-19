@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "dependencies": {
         "dompurify": "^2.3.2",
-        "page-lifecycle": "0.1.2"
+        "page-lifecycle": "^0.1.2"
     },
     "private": true
 }
