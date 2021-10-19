@@ -5,5 +5,9 @@
         "dompurify": "^2.3.2",
         "page-lifecycle": "^0.1.2"
     },
-    "private": true
+    "private": true,
+    "devDependencies": {
+        "webpack": "^5.58.2",
+        "webpack-cli": "^4.9.1"
+    }
 }
