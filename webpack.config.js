@@ -8,7 +8,11 @@ module.exports = {
         path: `${__dirname}/dist`,
         filename: 'main.js',
     },
-    plugins: [new MiniCssExtractPlugin()],
+    plugins: [
+        new MiniCssExtractPlugin({
+            filename: 'style.css'
+        })
+    ],
     module: {
     rules: [
         {
