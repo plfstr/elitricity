@@ -7,7 +7,7 @@ module.exports = {
     mode: 'production',
     output: {
         path: `${__dirname}/dist`,
-        filename: 'main.js',
+        filename: 'app.js',
     },
     plugins: [
         new MiniCssExtractPlugin({
