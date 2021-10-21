@@ -3,11 +3,17 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 module.exports = {
-    entry: './src/index.js',
+    entry: {
+        app: {
+            import: './src/index.js',
+            dependOn: 'dompurify'
+        },
+        dompurify: ['dompurify']
+    },
     mode: 'production',
     output: {
         path: `${__dirname}/dist`,
-        filename: 'app.js',
+        filename: '[name].js',
     },
     plugins: [
         new MiniCssExtractPlugin({
