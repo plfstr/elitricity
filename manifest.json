@@ -24,5 +24,18 @@
             "type": "image/png",
             "purpose": "maskable any"
         }
-    ]
+    ],
+    "user_preferences": {
+        "color_scheme_dark": {
+            "theme_color": "#136041",
+            "icons" : [
+                {
+                    "src": "logo-elit-512x512-dark.png",
+                    "sizes": "512x512",
+                    "type": "image/png",
+                    "purpose": "maskable any"
+                }
+            ]
+        }
+    }
 }
