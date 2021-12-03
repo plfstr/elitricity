@@ -57,10 +57,18 @@ function renderdata() {
   }
 }
 
+function fetchRegion() {
+  let thisregion = new URL(document.location).searchParams.get('region');
+  if (thisregion) {
+    return `https://api.carbonintensity.org.uk/regional/regionid/${encodeURLParams(thisregion)}`;
+  } else {
+    return 'https://api.carbonintensity.org.uk/generation';
+  }
+}
+
 let fetchdata = async () => {
-  let response = await fetch(
-    'https://api.carbonintensity.org.uk/generation', {cache: 'reload'}
-  ).catch(error => {
+  let fetchthis = fetchRegion();
+  let response = await fetch(fetchthis, {cache: 'reload'}).catch(error => {
     resetdata();
     output.textContent = `Sorry, error fetching grid data [${error}]`;
   });
