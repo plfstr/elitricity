@@ -8,12 +8,28 @@ function buildOutput(generation) {
   
   if(!output) return;
 
-   let {
-      data:{
-        to,
-        generationmix
-      }
-    } = generation;
+    if (generation.data.length) {
+      let {
+        data:{
+          0:{
+            shortname,
+            data: {
+              0:{
+                to,
+                generationmix
+              }
+            }
+          }
+        }
+      } = generation;
+    } else {
+    let {
+        data:{
+          to,
+          generationmix
+        }
+      } = generation;
+    }
     
     let domList = document.createElement('ul');
     for (let {fuel, perc} of generationmix) {
@@ -22,7 +38,11 @@ function buildOutput(generation) {
     
     let domDatainfo = document.createElement('p');
     domDatainfo.className = 'lowlight';
-    domDatainfo.textContent = `Updated ${makedate(to)}`;
+    if (generation.data.length) {
+      domDatainfo.textContent = `${shortname} region, Updated ${makedate(to)}`;
+    } else {
+      domDatainfo.textContent = `Updated ${makedate(to)}`;
+    }
     
     resetdata();
     domList.dataset.timeto = DOMPurify.sanitize(to);
@@ -60,7 +80,7 @@ function renderdata() {
 function fetchRegion() {
   let thisregion = new URL(document.location).searchParams.get('region');
   if (thisregion) {
-    return `https://api.carbonintensity.org.uk/regional/regionid/${encodeURLParams(thisregion)}`;
+    return `https://api.carbonintensity.org.uk/regional/regionid/${thisregion}`;
   } else {
     return 'https://api.carbonintensity.org.uk/generation';
   }
