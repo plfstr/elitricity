@@ -5,15 +5,27 @@ let output = document.querySelector('#output');
 let loader = document.querySelector('.loader');
 
 function buildOutput(generation) {
-  
+
   if(!output) return;
 
+  if (!generation.data.length) {
     let {
         data:{
           to,
           generationmix
         }
-      } = generation.data.length ? generation.data[0].data[0] : generation;
+      } = generation;
+  } else {
+    let {
+      data:[{
+        shortname,
+        data:[{
+          to,
+          generationmix
+        }]
+      }]
+    } = generation;
+  }
     
     let domList = document.createElement('ul');
     for (let {fuel, perc} of generationmix) {
@@ -22,8 +34,8 @@ function buildOutput(generation) {
     
     let domDatainfo = document.createElement('p');
     domDatainfo.className = 'lowlight';
-    if (generation.data.length) {
-      domDatainfo.textContent = `${generation.data[0].shortname} region, Updated ${makedate(to)}`;
+    if (!!generation.data.length) {
+      domDatainfo.textContent = `${shortname} region, Updated ${makedate(to)}`;
     } else {
       domDatainfo.textContent = `Updated ${makedate(to)}`;
     }
