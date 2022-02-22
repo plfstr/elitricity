@@ -127,7 +127,7 @@ button {
 .loader:before,
 .loader:after {
   background: #fff;
-  animation: load1 1.2s infinite ease-in-out;
+  animation: load1 1.6s infinite ease-in-out;
   width: .5em;
   height: 2em;
   margin: 0;
@@ -137,7 +137,7 @@ button {
   text-indent: -9999em;
   margin: 3em auto;
   position: relative;
-  animation-delay: .2s;
+  animation-delay: .3s;
 }
 .loader:before,
 .loader:after {
@@ -150,7 +150,7 @@ button {
 }
 .loader:after {
   left: 1em;
-  animation-delay: .4s
+  animation-delay: .6s
 }
 @keyframes load1 {
   0%,
@@ -159,5 +159,33 @@ button {
   }
   33% {
     transform: scaleY(1.375);
+  }
+}
+@supports (scale: 1) {
+  .loader,
+  .loader:before,
+  .loader:after {
+    animation: load2 1.4s infinite ease-in-out;
+  }
+  .loader {
+    animation-delay: .2s;
+  }
+  .loader:before {
+    left: 0;
+    translate: -1em 0;
+  }
+  .loader:after {
+    left: 0;
+    translate: 1em 0;
+    animation-delay: .4s
+  }
+  @keyframes load2 {
+    0%,
+    66% {
+      scale: 1 1;
+    }
+    33% {
+      scale: 1 1.375;
+    }
   }
 }
