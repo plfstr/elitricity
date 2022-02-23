@@ -3,6 +3,7 @@ import lifecycle from './lifecycle.mjs';
 
 let output = document.querySelector('#output');
 let loader = document.querySelector('.loader');
+var timeto = null;
 
 function buildOutput(generation) {
   
@@ -25,7 +26,6 @@ function buildOutput(generation) {
     domDatainfo.textContent = `Updated ${makedate(to)}`;
     
     resetdata();
-    domList.dataset.timeto = DOMPurify.sanitize(to);
     output.append(domList, domDatainfo);
     
 }
@@ -67,6 +67,7 @@ let fetchdata = async () => {
   let data = await response.json();
   try {
     buildOutput(data);
+    timeto = data.data.to;
   } 
   catch(error) {
     resetdata();
@@ -76,7 +77,6 @@ let fetchdata = async () => {
 
 function fetchexpired() {
   let timevalid = 1000*60*32;
-  let timeto = document.querySelector('ul').dataset.timeto;
   let timeuntil = new Date(timeto).getTime() + timevalid;
   let timenow = new Date().getTime();
   return timenow > timeuntil;
