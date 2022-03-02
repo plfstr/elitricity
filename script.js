@@ -46,6 +46,7 @@ function resetdata() {
 }
 
 function renderdata() {
+  if (!navigator.onLine) return;
   if (!fetchexpired()) return;
   if (fetchexpired()) {
       createrefresh();
@@ -110,9 +111,9 @@ function refreshdata() {
 
 if (lifecycle) {
   lifecycle.addEventListener('statechange', (event) => {
-    if (event.oldState === 'frozen' && event.newState === 'passive' || event.oldState === 'hidden' && event.newState === 'passive') {
-          renderdata();
-      }
+    if (['frozen', 'hidden'].includes(event.oldState) && event.newState === 'passive') {
+      renderdata();
+    }
   });
 }
 
