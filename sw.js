@@ -3,7 +3,7 @@ const CACHE = "elit-cache";
 const precacheFiles = [
   'index.html',
   'style.css?202200222',
-  'script.js?20220225',
+  'script.js?20220303',
   'purify.es.js?v2.3.6',
   'lifecycle.mjs',
   'manifest.json',
