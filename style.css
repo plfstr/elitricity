@@ -56,7 +56,7 @@ ul {
 
 li {
   flex: 1;
-  flex-basis: 100px;
+  flex-basis: 90px;
   margin: .25em;
 }
 
