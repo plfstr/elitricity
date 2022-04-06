@@ -4,6 +4,8 @@ import lifecycle from './lifecycle.mjs';
 let output = document.querySelector('#output');
 let loader = document.querySelector('.loader');
 var timeto = null;
+const oldstates = ['frozen', 'hidden'];
+const newstates = ['passive', 'active'];
 
 function buildOutput(generation) {
   
@@ -111,7 +113,7 @@ function refreshdata() {
 
 if (lifecycle) {
   lifecycle.addEventListener('statechange', (event) => {
-    if (['frozen', 'hidden'].includes(event.oldState) && ['passive', 'active'].includes(event.newState)) {
+    if (oldstates.includes(event.oldState) && newstates.includes(event.newState)) {
       renderdata();
     }
   });
