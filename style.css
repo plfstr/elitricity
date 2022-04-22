@@ -48,13 +48,19 @@ h1 {line-height: 1}
 ul {
   list-style-type: none;
   padding: 0;
+  display: -webkit-box;
+  display: -webkit-flexbox;
   display: flex;
   width: 100%;
   flex-flow: row wrap;
+  -webkit-box-pack: center;
+  -webkit-flex-pack: justify;
   justify-content: space-between;
 }
 
 li {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
   flex: 1;
   flex-basis: 90px;
   margin: .25em;
