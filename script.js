@@ -86,8 +86,8 @@ function fetchexpired() {
 }
 
 function createrefresh() {
-  let details = document.querySelector('p.lowlight');
   if (details.classList.contains('has-refresh')) return;
+  let details = document.querySelector('#output p');
     details.textContent += " - New data available!"
     details.classList.add('has-refresh');
   let domRefresh = document.createElement('button');
@@ -102,7 +102,7 @@ function createrefresh() {
 
 function removerefresh() {
   document.querySelector('button').remove();
-  document.querySelector('p.lowlight').classList.remove('has-refresh');
+  document.querySelector('#output p').classList.remove('has-refresh');
 }
 
 function refreshdata() {
