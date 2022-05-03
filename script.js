@@ -86,8 +86,8 @@ function fetchexpired() {
 }
 
 function createrefresh() {
-  if (details.classList.contains('has-refresh')) return;
   let details = document.querySelector('#output p');
+  if (!details || details.classList.contains('has-refresh')) return;
     details.textContent += " - New data available!"
     details.classList.add('has-refresh');
   let domRefresh = document.createElement('button');
