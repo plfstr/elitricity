@@ -28,9 +28,8 @@ html {
 body {
   min-height: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-flow: row nowrap;
+  place-items: center;
   margin: 0 auto;
   font: normal 100%/1.5 system-ui, sans-serif;
   background: var(--col-background);
