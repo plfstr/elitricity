@@ -2,7 +2,7 @@
     "name": "e-lit-tricity",
     "version": "1.0.0",
     "dependencies": {
-        "dompurify": "2.3.9",
+        "dompurify": "2.3.10",
         "page-lifecycle": "0.1.2"
     }
 }
