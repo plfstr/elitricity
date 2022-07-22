@@ -24,9 +24,6 @@ export class GridSources extends LitElement {
     super.connectedCallback();
     this.fetchdata();
     window.addEventListener('focus', ev => {
-      console.log('Focused!')
-      console.warn(this.generation)
-      console.warn(this.fetchexpired());
       if (this.fetchexpired()) {
         console.error('Data has expired!');
         this.expired = true;
@@ -99,7 +96,7 @@ export class GridList extends LitElement {
       font-size: 1.125em;
       border-top: 2px solid var(--col-lowlight);
       font-variant-numeric: tabular-nums;
-  //   }
+  }
   `;
 
   static properties = {
