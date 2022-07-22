@@ -7,10 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <link rel="preload" href="https://api.carbonintensity.org.uk/generation" as="fetch" crossorigin="anonymous">
-<script type="module" src="script.js"></script>
-<link rel="modulepreload" href="purify.es.js">
-<link rel="modulepreload" href="lifecycle.mjs">
-<script src="fallback.js" nomodule defer></script>
+<script type="module" src="app.js"></script>
 <link rel="stylesheet" href="style.css">
 <link rel="manifest" href="manifest.json">
 <meta name="mobile-web-app-capable" content="yes">
@@ -28,14 +25,13 @@
     <p>Current mix of electricity sources in the UK National Grid</p>
   </header>
 
-  <div class="data">
-    <div class="loader">Loading&hellip;</div>
-    <div id="output" aria-live="polite"></div>
-    <noscript>Sorry, requires JavaScript to fetch data</noscript>
+  <div id="output" aria-live="polite">
+    <grid-sources></grid-sources>
+    <noscript>Sorry, you need JavaScript</noscript>
   </div>
 
   <aside>
-    <p>Using <strike>Lit-HTML</strike> plain JS with the <a href="https://carbonintensity.org.uk" target="_blank" rel="noopener">Carbon Intensity API</a> by National Grid</p>
+    <p>Using Lit with the <a href="https://carbonintensity.org.uk" target="_blank" rel="noopener">Carbon Intensity API</a> by National Grid</p>
   </aside>
   <footer><p class="lowlight">By <a href="https://github.com/plfstr" target="_blank" rel="noopener">plfstr</a></p></footer>
 </main>
