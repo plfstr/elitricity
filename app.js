@@ -75,7 +75,7 @@ export class GridList extends LitElement {
   static styles = css`
   ul {
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
     justify-content: space-between;
     padding: 0;
   }
