@@ -32,6 +32,7 @@ export class GridSources extends LitElement {
   }
 
   fetchdata = async () => {
+    if ( this.griddata && fetchexpired() ) return;
     try {
       let response = await fetch('https://api.carbonintensity.org.uk/generation', {
         cache: 'reload'
