@@ -41,31 +41,6 @@ body {
 
 h1 {line-height: 1}
 
-#output, ul {
-  margin: 0;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-  display: -webkit-box;
-  display: -webkit-flexbox;
-  display: flex;
-  width: 100%;
-  flex-flow: row wrap;
-  -webkit-box-pack: center;
-  -webkit-flex-pack: justify;
-  justify-content: space-between;
-}
-
-li {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-  flex: 1;
-  flex-basis: 90px;
-  margin: .25em;
-}
-
 a {
   color: currentColor;
   text-decoration-color: var(--col-lowlight);
@@ -79,27 +54,12 @@ a {
   margin: auto;
 }
 
-.cover {
-  contain: content;
-  font-size: 1.5em;
-  text-transform: capitalize;
-}
-
-.num {
-  display: block;
-  font-weight: bold;
-  font-size: 1.125em;
-  border-top: .1875rem double var(--col-lowlight);
-}
-
 .lowlight {
   color: var(--col-lowlight);
   border-radius: .75em;
 }
 
-header p,
-aside p,
-footer p {
+:is(header, aside, footer) p {
   display: inline;
   padding: 0 0.75em;
   font-weight: 300;
@@ -119,19 +79,6 @@ footer p {
 .invert{
   background-color: var(--col-lowlight);
   color: var(--col-background);
-}
-
-button {
-  background-color: transparent;
-  -webkit-appearance: button;
-  appearance: button;
-  border: .1875rem double currentcolor;
-  background-color: var(--col-background);
-  color: var(--col-lowlight);
-  padding: .25em .75em;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: initial;
 }
 
 .loader,
