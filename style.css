@@ -1,13 +1,13 @@
 :root {
   --col-body: #eee;
-  --col-background: #28a573;
+  --col-background: #24a295;
   --col-lowlight: #86e6c8;
 }
 
 @media only screen and (prefers-color-scheme: dark) {
   :root {
     --col-body: #ddd;
-    --col-background: #136041;
+    --col-background: #12796f;
     --col-lowlight: #28a573;
   }
 }
