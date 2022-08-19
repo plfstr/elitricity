@@ -6,10 +6,10 @@
     "display" : "standalone",
     "start_url" : "/elitricity/",
     "short_name" : "Elitricity",
-    "theme_color" : "#28a573",
+    "theme_color" : "#24a295",
     "description" : "Current mix of electricity sources in the UK National Grid using the Carbon Intensity API by National Grid",
     "orientation" : "any",
-    "background_color" : "#28a573",
+    "background_color" : "#24a295",
     "related_applications" : "",
     "prefer_related_applications" : "false",
     "generated" : "true",
@@ -32,7 +32,7 @@
     ],
     "user_preferences": {
         "color_scheme_dark": {
-            "theme_color": "#136041",
+            "theme_color": "#12796f",
             "icons" : [
                 {
                     "src": "logo-elit-512x512-dark.png",
