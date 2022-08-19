@@ -23,6 +23,11 @@
             "sizes": "512x512",
             "type": "image/png",
             "purpose": "maskable any"
+        },{
+            "src": "logo-elit-512x512-monochrome.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "monochrome"
         }
     ],
     "user_preferences": {
