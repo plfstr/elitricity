@@ -15,10 +15,6 @@
     "generated" : "true",
     "icons" : [
         {
-            "src": "logo-elit-196x196.png",
-            "sizes": "196x196",
-            "type": "image/png"
-        },{
             "src": "logo-elit-512x512.png",
             "sizes": "512x512",
             "type": "image/png",
