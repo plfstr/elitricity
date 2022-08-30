@@ -17,7 +17,7 @@ export class GridSources extends LitElement {
     this.from = '';
     this.message = '';
     this.expired = false;
-    this.addEventListener('click', this.fetchdata);
+    this.addEventListener('refreshnow', (e) => e.detail.refresh ? this.fetchdata() : false);
   }
 
   connectedCallback() {
@@ -158,10 +158,14 @@ export class GridInfo extends LitElement {
     let options = { month: "2-digit", year: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hourCycle: "h23" };
     return new Intl.DateTimeFormat('en-GB', options).format(new Date(date));
   }
+  
+  _refresh() {
+      this.dispatchEvent(new CustomEvent('refreshnow', {detail: {refresh: true}, bubbles: true, composed: true}));
+  }
 
   render() {
     return html`${this.from ? html`
-      <p class="lowlight">(Updated <time datetime="${this.from}">${this._dateLocale(this.from)}</time>) <span ?hidden=${!this.newdata}>New update available! <button>Update</button></span></p>
+      <p class="lowlight">(Updated <time datetime="${this.from}">${this._dateLocale(this.from)}</time>) <span ?hidden=${!this.newdata}>New update available! <button @click=${this._refresh}>Update</button></span></p>
       ` : null
       }`
   }
