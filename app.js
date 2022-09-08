@@ -23,7 +23,7 @@ export class GridSources extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     this.fetchdata();
-    window.addEventListener('focus', ev => {
+    window.addEventListener('pageshow', ev => {
       if (this.fetchexpired()) {
         console.error('Data has expired!');
         this.expired = true;
