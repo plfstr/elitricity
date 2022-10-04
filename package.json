@@ -2,6 +2,7 @@
     "name": "e-lit-tricity",
     "version": "1.0.0",
     "dependencies": {
-        "lit": "latest"
-    }
+        "lit": "2.3.0"
+    },
+    "private": true
 }
