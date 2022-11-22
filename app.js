@@ -81,7 +81,7 @@ export class GridList extends LitElement {
   }
   .cover {
       flex: 1;
-      flex-basis: 90px;
+      flex-basis: 17%;
       font-size: 1.5em;
       text-transform: capitalize;
       display: inline-block;
