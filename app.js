@@ -94,7 +94,7 @@ export class GridList extends LitElement {
       display: block;
       font-weight: bold;
       font-size: 1.125em;
-      border-top: 2px solid var(--col-lowlight);
+      border-top: 0.0625rem solid var(--col-lowlight);
       font-variant-numeric: tabular-nums;
   }
   `;
