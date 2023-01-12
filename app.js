@@ -88,7 +88,8 @@ export class GridList extends LitElement {
       margin: 0;
       text-transform: capitalize;
       font-weight: normal;
-      margin:.25rem;
+      margin: .25rem 1.25vw;
+      min-width: 5ch;
   }
   .num {
       display: block;
