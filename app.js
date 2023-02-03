@@ -28,7 +28,8 @@ export class GridSources extends LitElement {
         console.error('Data has expired!');
         this.expired = true;
       }
-    })
+    });
+    window.setInterval(() => this.fetchfocused(), timevalid);
   }
 
   fetchdata = async () => {
@@ -55,6 +56,12 @@ export class GridSources extends LitElement {
     console.warn(timenow > timeuntil)
     return timenow > timeuntil;
   }
+  
+  fetchfocused() {
+      if (document.hasFocus()) {
+        this.fetchdata();
+      }
+    }
 
   render() {
     return html`
