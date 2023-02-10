@@ -71,7 +71,6 @@ a {
 .data {
   display: block;
   margin: -1.125em auto;
-  padding: 1.5em 0;
   border-top: .1875rem double var(--col-lowlight);
   border-bottom: .1875rem double var(--col-lowlight);
 }
