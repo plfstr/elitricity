@@ -29,7 +29,7 @@ export class GridSources extends LitElement {
         this.expired = true;
       }
     });
-    window.setInterval(() => this.fetchfocused(), timevalid);
+    window.setInterval(() => this.fetchfocused(), timevalid / 6);
   }
 
   fetchdata = async () => {
@@ -58,7 +58,7 @@ export class GridSources extends LitElement {
   }
   
   fetchfocused() {
-      if (document.hasFocus()) {
+      if (this.fetchexpired() && document.hasFocus()) {
         this.fetchdata();
       }
     }
