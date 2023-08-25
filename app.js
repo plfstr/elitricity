@@ -173,9 +173,9 @@ export class GridInfo extends LitElement {
 
   render() {
     return html`${this.from ? html`
-      <p class="lowlight">(Updated <time datetime="${this.from}">${this._dateLocale(this.from)}</time>) <span ?hidden=${!this.newdata}>New update available! <button @click=${this._refresh}>Update</button></span></p>
+      <p class="lowlight">(Updated <time datetime="${this.from}">${this._dateLocale(this.from)}</time>) <button ?hidden=${!this.newdata} @click=${this._refresh}>Update Data!</button></p>
       ` : null
-      }`
+    }`
   }
 }
 customElements.define('grid-info', GridInfo);
