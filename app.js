@@ -2,6 +2,7 @@ import { LitElement, html, render, css } from './lit-core.min.js';
 
 let output = document.querySelector("#output");
 let timevalid = 1000 * 60 * 33;
+let awakelock = false;
 
 export class GridSources extends LitElement {
 
@@ -30,6 +31,9 @@ export class GridSources extends LitElement {
       }
     });
     window.setInterval(() => this.fetchfocused(), timevalid / 6);
+    awakeLock.addEventListener("release", () => {
+      awakelock = false;
+    });
   }
 
   fetchdata = async () => {
@@ -60,6 +64,13 @@ export class GridSources extends LitElement {
   fetchfocused() {
       if (this.fetchexpired() && document.hasFocus()) {
         this.fetchdata();
+        if ("wakeLock" in navigator && !awakelock) {
+          try {
+            awakelock = await navigator.wakeLock.request("screen");
+          } catch(err) {
+            console.error('Awake lock issue', err);
+          }
+        }
       }
     }
 
