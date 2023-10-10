@@ -1,4 +1,4 @@
-import { LitElement, html, render, css } from './lit-core.min.js';
+import { LitElement, html, render, css } from './vendor/lit-core.min.js';
 
 let output = document.querySelector("#output");
 let timevalid = 1000 * 60 * 33;
