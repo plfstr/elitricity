@@ -41,6 +41,7 @@ export class GridSources extends LitElement {
         throw new Error(`HTTP error: ${response.status}`);
       }
       const json = await response.json();
+      if (!json?.data?.generationmix.length) throw new Error('Sorry, generation data not available currently');
       this.expired = false;
       this.griddata = json;
       this.to = json?.data?.to;
