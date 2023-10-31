@@ -41,6 +41,9 @@ export class GridSources extends LitElement {
         throw new Error(`HTTP error: ${response.status}`);
       }
       const json = await response.json();
+      if (json?.error) {
+        throw new Error(json?.error?.code);
+      }
       this.expired = false;
       this.griddata = json;
       this.to = json?.data?.to;
