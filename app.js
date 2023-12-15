@@ -166,6 +166,14 @@ export class GridInfo extends LitElement {
     super();
   }
 
+  _toggleLabel() {
+    if (navigator.onLine) {
+      return "Updated";
+    } else {
+      return "Cached";
+    }
+  }
+  
   _dateLocale(date) {
     let options = { month: "2-digit", year: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hourCycle: "h23" };
     return new Intl.DateTimeFormat('en-GB', options).format(new Date(date));
@@ -177,7 +185,7 @@ export class GridInfo extends LitElement {
 
   render() {
     return html`${this.from ? html`
-      <p class="lowlight">(Updated <time datetime="${this.from}">${this._dateLocale(this.from)}</time>) <button ?hidden=${!this.newdata} @click=${this._refresh}>Update Data!</button></p>
+      <p class="lowlight">(${this._toggleLabel()} <time datetime="${this.from}">${this._dateLocale(this.from)}</time>) <button ?hidden=${!this.newdata} @click=${this._refresh}>Update Data!</button></p>
       ` : null
     }`
   }
