@@ -15,13 +15,15 @@ const NETWORK_ASSETS = '/https\:\/\/api\.carbonintensity\.org\.uk\/generation/';
 self.addEventListener('install', event => {
 
     // Static Routing API...
-    event.addRoutes({
-      condition: {
-            urlPattern: NETWORK_ASSETS,
-            runningStatus: "running"
-      },
-      source: "network"
-    });
+    if (event.addRoutes) {
+        event.addRoutes({
+          condition: {
+                urlPattern: NETWORK_ASSETS,
+                runningStatus: "running"
+          },
+          source: "network"
+        })
+    };
 
     event.waitUntil((async () => {
         const cache = await caches.open(CACHE_NAME);
