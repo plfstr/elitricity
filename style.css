@@ -7,6 +7,7 @@
 
 @supports not (color: light-dark(red, green)) {
   :root {
+    color-scheme: light dark;
     --col-body: #eee;
     --col-background: #24a295;
     --col-lowlight: #86e6c8;
