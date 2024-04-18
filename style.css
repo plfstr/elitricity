@@ -1,14 +1,23 @@
 :root {
-  --col-body: #eee;
-  --col-background: #24a295;
-  --col-lowlight: #86e6c8;
+    color-scheme: light dark;
+    --col-body: light-dark(#eee, #ddd);
+    --col-background: light-dark(#24a295, #12796f);
+    --col-lowlight: light-dark(#86e6c8, #24a295);
 }
 
-@media only screen and (prefers-color-scheme: dark) {
+@supports not (color: light-dark(red, green)) {
   :root {
-    --col-body: #ddd;
-    --col-background: #12796f;
-    --col-lowlight: #24a295;
+    --col-body: #eee;
+    --col-background: #24a295;
+    --col-lowlight: #86e6c8;
+  }
+  
+  @media only screen and (prefers-color-scheme: dark) {
+    :root {
+      --col-body: #ddd;
+      --col-background: #12796f;
+      --col-lowlight: #24a295;
+    }
   }
 }
 
@@ -33,7 +42,7 @@ body {
   flex-flow: row nowrap;
   margin: 0 auto;
   font: normal 100%/1.5 system-ui, sans-serif;
-  background: var(--col-background);
+  background-color: var(--col-background);
   color: var(--col-body);
   text-align: center;
   font-size: clamp(1em, 2vw, 2em);
