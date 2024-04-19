@@ -5,6 +5,14 @@
     --col-lowlight: light-dark(#86e6c8, #24a295);
 }
 
+[data-carbon='moderate'] {
+    --col-background: light-dark(#d2802a, #a96722);
+}
+
+[data-carbon='high'] {
+    --col-background: light-dark(#de431f, #92311a);
+}
+
 @supports not (color: light-dark(red, green)) {
   :root {
     color-scheme: light dark;
@@ -12,12 +20,30 @@
     --col-background: #24a295;
     --col-lowlight: #86e6c8;
   }
-  
+    
+  [data-carbon='moderate'] {
+      --col-background: #d2802a;
+      --col-lowlight: #e9aa68;
+  }
+
+  [data-carbon='high'] {
+      --col-background: #de431f;
+      --col-lowlight:  #fe866a;
+  }
+    
   @media only screen and (prefers-color-scheme: dark) {
     :root {
       --col-body: #ddd;
       --col-background: #12796f;
       --col-lowlight: #24a295;
+    }
+      
+    [data-carbon='moderate'] {
+          --col-background: #a96722;
+    }
+    
+    [data-carbon='high'] {
+          --col-background: #92311a;
     }
   }
 }
