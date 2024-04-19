@@ -190,6 +190,15 @@ export class GridInfo extends LitElement {
 }
 customElements.define('grid-info', GridInfo);
 
+(() => {
+  fetch('https://api.carbonintensity.org.uk/intensity', {priority: 'low'}).then(response => {
+      if (response.ok) {
+          return response.json();
+      }
+  })
+  .then(response => {document.body.dataset.carbon = response?.data[0]?.intensity?.index ?? 'low'})
+  .catch(err => console.errror('Intensity Error!', err.message))
+})();
 
 if ("serviceWorker" in navigator) {
   if (navigator.serviceWorker.controller) {
