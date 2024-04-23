@@ -207,7 +207,7 @@ customElements.define('grid-info', GridInfo);
     }
     domMetacolor.content = getComputedStyle(document.body).getPropertyValue("--col-background");
   )
-  .catch(err => console.errror('Intensity Error!', err.message))
+  .catch(err => console.error('Intensity Error!', err.message))
 })();
 
 if ("serviceWorker" in navigator) {
