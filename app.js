@@ -196,7 +196,17 @@ customElements.define('grid-info', GridInfo);
           return response.json();
       }
   })
-  .then(response => {document.body.dataset.carbon = response?.data[0]?.intensity?.index ?? 'low'})
+  .then(response => {
+    document.body.dataset.carbon = response?.data[0]?.intensity?.index ?? 'low'};
+    // Set meta theme color to match...
+    let domMetacolor = document.querySelector('meta[name="theme-color"]');
+    if (!domMetacolor) {
+      domMetacolor = document.createElement('meta');
+      domMetacolor.name = "theme-color";
+      document.head.append(domMetacolor);
+    }
+    domMetacolor.content = getComputedStyle(document.body).getPropertyValue("--col-background");
+  )
   .catch(err => console.errror('Intensity Error!', err.message))
 })();
 
