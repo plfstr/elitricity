@@ -190,7 +190,7 @@ export class GridInfo extends LitElement {
 }
 customElements.define('grid-info', GridInfo);
 
-(() => {
+(async () => {
   fetch('https://api.carbonintensity.org.uk/intensity', {priority: 'low'}).then(response => {
       if (response.ok) {
           return response.json();
