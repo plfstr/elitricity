@@ -197,7 +197,7 @@ customElements.define('grid-info', GridInfo);
       }
   })
   .then(response => {
-    document.body.dataset.carbon = response?.data[0]?.intensity?.index ?? 'low'};
+    document.body.dataset.carbon = response?.data[0]?.intensity?.index ?? 'low';
     // Set meta theme color to match...
     let domMetacolor = document.querySelector('meta[name="theme-color"]');
     if (!domMetacolor) {
