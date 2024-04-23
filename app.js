@@ -206,7 +206,7 @@ customElements.define('grid-info', GridInfo);
       document.head.append(domMetacolor);
     }
     domMetacolor.content = getComputedStyle(document.body).getPropertyValue("--col-background");
-  )
+  })
   .catch(err => console.error('Intensity Error!', err.message))
 })();
 
