@@ -26,6 +26,7 @@ export class GridSources extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     this.fetchdata();
+    this.fetchIntensity();
     window.addEventListener('focus', ev => {
       if (this.fetchexpired()) {
         console.error('Data has expired!');
@@ -64,8 +65,29 @@ export class GridSources extends LitElement {
   fetchfocused() {
       if (this.fetchexpired() && document.hasFocus()) {
         this.fetchdata();
+        this.fetchIntensity();
       }
     }
+  
+  fetchIntensity() {
+    fetch('https://api.carbonintensity.org.uk/intensity', {priority: 'low'}).then(response => {
+        if (response.ok) {
+            return response.json();
+        }
+    })
+    .then(response => {
+      document.body.dataset.carbon = response?.data[0]?.intensity?.index ?? 'low';
+      // Set meta theme color to match...
+      let domMetacolor = document.querySelector('meta[name="theme-color"]');
+      if (!domMetacolor) {
+        domMetacolor = document.createElement('meta');
+        domMetacolor.name = "theme-color";
+        document.head.append(domMetacolor);
+      }
+      domMetacolor.content = getComputedStyle(document.body).getPropertyValue("--col-background");
+    })
+    .catch(err => console.error('Intensity Error!', err.message))
+  }
 
   render() {
     return html`
@@ -189,26 +211,6 @@ export class GridInfo extends LitElement {
   }
 }
 customElements.define('grid-info', GridInfo);
-
-(async () => {
-  fetch('https://api.carbonintensity.org.uk/intensity', {priority: 'low'}).then(response => {
-      if (response.ok) {
-          return response.json();
-      }
-  })
-  .then(response => {
-    document.body.dataset.carbon = response?.data[0]?.intensity?.index ?? 'low';
-    // Set meta theme color to match...
-    let domMetacolor = document.querySelector('meta[name="theme-color"]');
-    if (!domMetacolor) {
-      domMetacolor = document.createElement('meta');
-      domMetacolor.name = "theme-color";
-      document.head.append(domMetacolor);
-    }
-    domMetacolor.content = getComputedStyle(document.body).getPropertyValue("--col-background");
-  })
-  .catch(err => console.error('Intensity Error!', err.message))
-})();
 
 if ("serviceWorker" in navigator) {
   if (navigator.serviceWorker.controller) {
