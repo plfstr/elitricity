@@ -26,6 +26,7 @@ export class GridSources extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     this.fetchdata();
+    this.fetchintensity();
     window.addEventListener('focus', ev => {
       if (this.fetchexpired()) {
         console.error('Data has expired!');
@@ -52,6 +53,29 @@ export class GridSources extends LitElement {
     }
   }
 
+  fetchintensity() {
+    fetch('https://api.carbonintensity.org.uk/intensity', { priority: 'low' }).then(response => {
+      if (response.ok) {
+        return response.json();
+      }
+    })
+      .then(response => {
+        // Apply data-carbon intensity value to body
+        document.body.dataset.carbon = response?.data[0]?.intensity?.index ?? 'low';
+        // Set meta theme color to match...
+        let domMetacolor = document.querySelector('meta[name="theme-color"]');
+        // Create meta tag if none exists...
+        if (!domMetacolor) {
+          domMetacolor = document.createElement('meta');
+          domMetacolor.name = "theme-color";
+          document.head.append(domMetacolor);
+        }
+        // Apply color...
+        domMetacolor.content = getComputedStyle(document.body).getPropertyValue("--col-background");
+      })
+      .catch(err => console.error('Intensity Error!', err.message))
+  };
+
   fetchexpired() {
     let timeuntil = new Date(this.to).getTime() + timevalid;
     let timenow = new Date().getTime();
@@ -62,6 +86,7 @@ export class GridSources extends LitElement {
   fetchfocused() {
       if (this.fetchexpired() && document.hasFocus()) {
         this.fetchdata();
+        this.fetchintensity();
       }
     }
 
@@ -187,26 +212,6 @@ export class GridInfo extends LitElement {
   }
 }
 customElements.define('grid-info', GridInfo);
-
-(async () => {
-  fetch('https://api.carbonintensity.org.uk/intensity', {priority: 'low'}).then(response => {
-      if (response.ok) {
-          return response.json();
-      }
-  })
-  .then(response => {
-    document.body.dataset.carbon = response?.data[0]?.intensity?.index ?? 'low';
-    // Set meta theme color to match...
-    let domMetacolor = document.querySelector('meta[name="theme-color"]');
-    if (!domMetacolor) {
-      domMetacolor = document.createElement('meta');
-      domMetacolor.name = "theme-color";
-      document.head.append(domMetacolor);
-    }
-    domMetacolor.content = getComputedStyle(document.body).getPropertyValue("--col-background");
-  })
-  .catch(err => console.error('Intensity Error!', err.message))
-})();
 
 if ("serviceWorker" in navigator) {
   if (navigator.serviceWorker.controller) {
