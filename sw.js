@@ -52,3 +52,7 @@ self.addEventListener('fetch', event => {
       };
   });
 });
+
+self.addEventListener('error', err => {
+  console.error(err.message);
+});
