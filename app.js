@@ -62,16 +62,6 @@ export class GridSources extends LitElement {
       .then(response => {
         // Apply data-carbon intensity value to body
         document.body.dataset.carbon = response?.data[0]?.intensity?.index ?? 'low';
-        // Set meta theme color to match...
-        let domMetacolor = document.querySelector('meta[name="theme-color"]');
-        // Create meta tag if none exists...
-        if (!domMetacolor) {
-          domMetacolor = document.createElement('meta');
-          domMetacolor.name = "theme-color";
-          document.head.append(domMetacolor);
-        }
-        // Apply color...
-        domMetacolor.content = getComputedStyle(document.body).getPropertyValue("--col-background");
       })
       .catch(err => console.error('Intensity Error!', err.message))
   };
