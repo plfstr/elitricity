@@ -60,7 +60,7 @@ html {
 body {
   min-height: 100%;
   margin: 0 auto;
-  place-items: center;
+  place-content: center;
   font: normal 100%/1.5 system-ui, sans-serif;
   background-color: var(--col-background);
   color: var(--col-body);
