@@ -38,6 +38,7 @@ export class GridSources extends LitElement {
 
   fetchdata = async () => {
     try {
+      this.message = 'Loading…';
       let response = await fetch('https://api.carbonintensity.org.uk/generation');
       if (!response.ok) {
         throw new Error(`HTTP error: ${response.status}`);
@@ -45,6 +46,7 @@ export class GridSources extends LitElement {
       const json = await response.json();
       if (!json?.data?.generationmix.length) throw new Error('Sorry, generation data not available currently');
       this.expired = false;
+      this.message = null;
       this.griddata = json;
       this.to = json?.data?.to;
     } catch (error) {
@@ -82,8 +84,7 @@ export class GridSources extends LitElement {
 
   render() {
     return html`
-      <p role="status" ?hidden=${this.griddata} class="loader">Loading...</p>
-      <p role="status" ?hidden=${!this.message}>${this.message}</p>
+      <p role="status">${this.message}</p>
       <grid-list .generation=${this?.griddata?.data?.generationmix}></grid-list>
       <grid-info from=${this?.griddata?.data?.from} ?newdata=${this.expired}></grid-info>
     `
