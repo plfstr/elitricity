@@ -145,8 +145,20 @@ export class GridList extends LitElement {
         <li class="cover">${source.fuel}<span class="num">${source.perc}%</span></li>
       `)}
     </ul>
-    ` : null
-      }`
+    ` : html`
+      <ul role="presentation">
+        <li class="cover">X<span class="num">%</span></li>
+        <li class="cover">X<span class="num">%</span></li>
+        <li class="cover">X<span class="num">%</span></li>
+        <li class="cover">X<span class="num">%</span></li>
+        <li class="cover">X<span class="num">%</span></li>
+        <li class="cover">X<span class="num">%</span></li>
+        <li class="cover">X<span class="num">%</span></li>
+        <li class="cover">X<span class="num">%</span></li>
+        <li class="cover">X<span class="num">%</span></li>
+      </ul>
+    `
+    }`
   }
 }
 customElements.define('grid-list', GridList);
