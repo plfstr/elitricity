@@ -105,20 +105,18 @@ export class GridList extends LitElement {
 
   static styles = css`
   ul {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
     padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr));
+    gap: 0 1rem;
   }
   .cover {
-      flex: 1 17%;
       font-size: 1.5em;
       text-transform: capitalize;
       display: inline-block;
       margin: 0;
       text-transform: capitalize;
       font-weight: normal;
-      margin: .25rem 1.25vw;
   }
   .num {
       display: block;
