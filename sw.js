@@ -48,7 +48,8 @@ self.addEventListener('fetch', event => {
           return cachedResponse;
       } else {
         // Otherwise, go to the network
-          return fetch(event.request)
+        const fetchResponse = await fetch(event.request.url);
+        return fetchResponse;
       };
   });
 });
