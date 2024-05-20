@@ -147,15 +147,15 @@ export class GridList extends LitElement {
     </ul>
     ` : html`
       <ul role="presentation">
-        <li class="cover">X<span class="num">%</span></li>
-        <li class="cover">X<span class="num">%</span></li>
-        <li class="cover">X<span class="num">%</span></li>
-        <li class="cover">X<span class="num">%</span></li>
-        <li class="cover">X<span class="num">%</span></li>
-        <li class="cover">X<span class="num">%</span></li>
-        <li class="cover">X<span class="num">%</span></li>
-        <li class="cover">X<span class="num">%</span></li>
-        <li class="cover">X<span class="num">%</span></li>
+        <li class="cover">Src<span class="num">%</span></li>
+        <li class="cover">Src<span class="num">%</span></li>
+        <li class="cover">Src<span class="num">%</span></li>
+        <li class="cover">Src<span class="num">%</span></li>
+        <li class="cover">Src<span class="num">%</span></li>
+        <li class="cover">Src<span class="num">%</span></li>
+        <li class="cover">Src<span class="num">%</span></li>
+        <li class="cover">Src<span class="num">%</span></li>
+        <li class="cover">Src<span class="num">%</span></li>
       </ul>
     `
     }`
