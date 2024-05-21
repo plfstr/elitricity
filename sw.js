@@ -36,22 +36,11 @@ self.addEventListener('activate', event => {
 });
 
 self.addEventListener('fetch', event => {
-  event.respondWith(async () => {
-      const cache = await caches.open(CACHE_NAME);
-
-      // match the request to our cache
-      const cachedResponse = await cache.match(event.request);
-
-      // check if we got a valid response
-      if (cachedResponse !== undefined) {
-          // Cache hit, return the resource
-          return cachedResponse;
-      } else {
-        // Otherwise, go to the network
-        const fetchResponse = await fetch(event.request.url);
-        return fetchResponse;
-      };
-  });
+  event.respondWith(
+    caches.match(event.request).then(cachedResponse => {
+      return cachedResponse || fetch(event.request);
+    })
+  );     
 });
 
 self.addEventListener('error', err => {
