@@ -107,7 +107,7 @@ export class GridList extends LitElement {
   ul {
     padding: 0;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(8ch, 1fr));
     gap: 0 1rem;
   }
   .cover {
