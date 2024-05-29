@@ -4,7 +4,7 @@ const CACHE_NAME = 'elit-cache';
 const PRECACHE_ASSETS = [
     'index.html?20240521',
     'style.css?20240522',
-    'app.js',
+    'app.js?20240529',
     'manifest.json'
 ]
 
