@@ -9,7 +9,7 @@ const PRECACHE_ASSETS = [
 ]
 
 // Assets to fetch from network here:
-const NETWORK_ASSETS = '/https\:\/\/api\.carbonintensity\.org\.uk\/generation/';
+const NETWORK_ASSETS = 'https\:\/\/api\.carbonintensity\.org\.uk\/generation';
 
 // Listener for the install event - precaches our assets list on service worker install.
 self.addEventListener('install', event => {
@@ -36,6 +36,7 @@ self.addEventListener('activate', event => {
 });
 
 self.addEventListener('fetch', event => {
+  if (new RegExp(NETWORK_ASSETS).test(event.request.url)) return;
   event.respondWith(
     caches.match(event.request).then(cachedResponse => {
       return cachedResponse || fetch(event.request);
