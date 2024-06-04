@@ -5,6 +5,10 @@
     --col-lowlight: rgba(250,250,250,0.5);
 }
 
+[data-carbon='low'] {
+    --col-background: light-dark(#24a295, #12796f);
+}
+
 [data-carbon='moderate'] {
     --col-background: light-dark(#d2802a, #a96722);
 }
@@ -18,6 +22,10 @@
     color-scheme: light dark;
     --col-body: #eee;
     --col-background: #24a295;
+  }
+
+  [data-carbon='low'] {
+      --col-background: #24a295;
   }
     
   [data-carbon='moderate'] {
@@ -33,7 +41,11 @@
       --col-body: #ddd;
       --col-background: #12796f;
     }
-      
+    
+    [data-carbon='low'] {
+          --col-background: #12796f;
+    }
+     
     [data-carbon='moderate'] {
           --col-background: #a96722;
     }
