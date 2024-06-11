@@ -5,7 +5,7 @@
     --col-lowlight: rgba(250,250,250,0.5);
 }
 
-[data-carbon='low'] {
+[data-carbon$='low'] {
     --col-background: light-dark(#24a295, #12796f);
 }
 
@@ -13,7 +13,7 @@
     --col-background: light-dark(#d2802a, #a96722);
 }
 
-[data-carbon='high'] {
+[data-carbon$='high'] {
     --col-background: light-dark(#de431f, #92311a);
 }
 
@@ -24,7 +24,7 @@
     --col-background: #24a295;
   }
 
-  [data-carbon='low'] {
+  [data-carbon$='low'] {
       --col-background: #24a295;
   }
     
@@ -32,7 +32,7 @@
       --col-background: #d2802a;
   }
 
-  [data-carbon='high'] {
+  [data-carbon$='high'] {
       --col-background: #de431f;
   }
     
@@ -42,7 +42,7 @@
       --col-background: #12796f;
     }
     
-    [data-carbon='low'] {
+    [data-carbon$='low'] {
           --col-background: #12796f;
     }
      
@@ -50,7 +50,7 @@
           --col-background: #a96722;
     }
     
-    [data-carbon='high'] {
+    [data-carbon$='high'] {
           --col-background: #92311a;
     }
   }
