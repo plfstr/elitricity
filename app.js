@@ -2,7 +2,14 @@ import { LitElement, html, render, css } from './vendor/lit-core.min.js';
 
 if (window.trustedTypes && trustedTypes.createPolicy) {
     trustedTypes.createPolicy('default', {
-      createScriptURL: string => encodeURI(string)
+      createScriptURL: string => {
+        try {
+          return new URL(string, document.location);
+        } catch(err) {
+          console.error(err.message);
+          return null;
+        }
+      }
     });
 }
 
