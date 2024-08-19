@@ -79,6 +79,7 @@ export class GridSources extends LitElement {
   }
 
   fetchintensity() {
+    if (window.matchMedia(('forced-colors: active')).match) return;
     fetch('https://api.carbonintensity.org.uk/intensity', { priority: 'low' }).then(response => {
       if (response.ok) {
         return response.json();
