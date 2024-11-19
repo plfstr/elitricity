@@ -62,7 +62,7 @@ export class GridSources extends LitElement {
   fetchdata = async () => {
     this.message = 'Loading…';
     try {
-      let response = await fetch('https://api.carbonintensity.org.uk/generation');
+      let response = await fetch('https://api.carbonintensity.org.uk/generation', {signal: AbortSignal.timeout(10000)});
       const json = await response.json();
       if (json?.data?.generationmix.length) {
           this.expired = false;
