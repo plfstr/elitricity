@@ -7,24 +7,21 @@ if (window.trustedTypes && trustedTypes.createPolicy) {
 }
 
 // Set meta theme color to match intensity background...
-const domMetacolor = document.querySelector('meta[name="theme-color"]');
-const dynamicthemecolor = !window.matchMedia('(min--moz-device-pixel-ratio: 0)').matches;
-if (!domMetacolor) {
+document.body.addEventListener("transitionend", () => {
+  let domMetacolor = document.querySelector('meta[name="theme-color"]');
+  // Create meta tag if none exists...
+  if (!domMetacolor) {
     domMetacolor = document.createElement('meta');
     domMetacolor.name = "theme-color";
     document.head.append(domMetacolor);
-}
-if (dynamicthemecolor) {
-    document.body.addEventListener("transitionend", () => {
-      try {
-        domMetacolor.content = getComputedStyle(document.body).getPropertyValue("--col-background");
-      } catch (err) {
-        domMetacolor.content = "#fff";
-      }
-    })
-} else {
-  domMetacolor.content = "#fff";
-}
+  }
+  // Apply color...
+  try {
+    domMetacolor.content = getComputedStyle(document.body).getPropertyValue("--col-background");
+  } catch (err) {
+    domMetacolor.content = "#fff";
+  };
+});
 
 let output = document.querySelector("#output");
 let timevalid = 1000 * 60 * 33;
