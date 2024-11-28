@@ -7,7 +7,7 @@ if (window.trustedTypes && trustedTypes.createPolicy) {
 }
 
 // Set meta theme color to match intensity background...
-const domMetacolor = document.querySelector('meta[name="theme-color"]');
+let domMetacolor = document.querySelector('meta[name="theme-color"]');
 const dynamicthemecolor = !window.matchMedia('(min--moz-device-pixel-ratio: 0)').matches;
 if (!domMetacolor) {
     domMetacolor = document.createElement('meta');
