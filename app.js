@@ -17,8 +17,6 @@ if (domMetacolor && dynamicthemecolor) {
         domMetacolor.content = "#fff";
       }
     })
-} else {
-  domMetacolor.content = "#fff";
 }
 
 let output = document.querySelector("#output");
