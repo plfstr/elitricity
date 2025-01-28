@@ -7,14 +7,9 @@ if (window.trustedTypes && trustedTypes.createPolicy) {
 }
 
 // Set meta theme color to match intensity background...
-let domMetacolor = document.querySelector('meta[name="theme-color"]');
-const dynamicthemecolor = !window.matchMedia('(min--moz-device-pixel-ratio: 0)').matches;
-if (!domMetacolor) {
-    domMetacolor = document.createElement('meta');
-    domMetacolor.name = "theme-color";
-    document.head.append(domMetacolor);
-}
-if (dynamicthemecolor) {
+const domMetacolor = document.querySelector('meta[name="theme-color"]');
+const dynamicthemecolor = window.matchMedia('not (min--moz-device-pixel-ratio: 0)').matches;
+if (domMetacolor && dynamicthemecolor) {
     document.body.addEventListener("transitionend", () => {
       try {
         domMetacolor.content = getComputedStyle(document.body).getPropertyValue("--col-background");
