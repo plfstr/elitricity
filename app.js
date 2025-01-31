@@ -14,7 +14,7 @@ if (domMetacolor && dynamicthemecolor) {
       try {
         domMetacolor.content = getComputedStyle(document.body).getPropertyValue("--col-background");
       } catch (err) {
-        domMetacolor.content = "#fff";
+        domMetacolor.content = "none";
       }
     })
 }
