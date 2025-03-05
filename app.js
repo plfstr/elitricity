@@ -119,15 +119,14 @@ export class GridList extends LitElement {
   static styles = css`
   ul {
     padding: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(8ch, 1fr));
-    gap: 0 1rem;
+    text-wrap: balance;
   }
   .cover {
       font-size: 1.5em;
       text-transform: capitalize;
       display: inline-block;
       margin: 0;
+      padding: .15em;
       text-transform: capitalize;
       font-weight: normal;
   }
