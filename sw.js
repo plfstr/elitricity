@@ -9,7 +9,7 @@ const PRECACHE_ASSETS = [
 ]
 
 // Assets to fetch from network here:
-const NETWORK_ASSETS = 'https\:\/\/api\.carbonintensity\.org\.uk\/generation';
+const NETWORK_ASSETS = 'https://api.carbonintensity.org.uk/generation';
 
 // Listener for the install event - precaches our assets list on service worker install.
 self.addEventListener('install', event => {
