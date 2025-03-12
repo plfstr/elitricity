@@ -1,4 +1,5 @@
 import { LitElement, html, render, css } from './vendor/lit-core.min.js';
+import {GridListStyles, GridInfoStyles} from './style-components.js';
 
 if (window.trustedTypes && trustedTypes.createPolicy) {
     trustedTypes.createPolicy('default', {
@@ -116,28 +117,7 @@ customElements.define('grid-sources', GridSources);
 // <grid-list>
 export class GridList extends LitElement {
 
-  static styles = css`
-  ul {
-    padding: 0;
-    text-wrap: balance;
-  }
-  .cover {
-      font-size: 1.5em;
-      text-transform: capitalize;
-      display: inline-block;
-      margin: 0;
-      padding: .15em;
-      text-transform: capitalize;
-      font-weight: normal;
-  }
-  .num {
-      display: block;
-      font-weight: bold;
-      font-size: 1.125em;
-      border-top: 0.0625rem solid var(--col-lowlight);
-      font-variant-numeric: tabular-nums;
-  }
-  `;
+  static styles = [GridListStyles];
 
   static properties = {
     generation: { type: Array }
@@ -177,25 +157,7 @@ customElements.define('grid-list', GridList);
 // <grid-info>
 export class GridInfo extends LitElement {
 
-  static styles = css`
-  p {
-    margin: 0;
-    color: var(--col-lowlight, currentColor)
-  }
-
-  button {
-    background-color: transparent;
-    -webkit-appearance: button;
-    appearance: button;
-    border: .1875rem double currentcolor;
-    background-color: var(--col-background);
-    color: var(--col-lowlight);
-    padding: .25em .75em;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: initial;
-  }
-`;
+  static styles = [GridInfoStyles];
 
   static properties = {
     from: { type: Date },
