@@ -12,7 +12,20 @@ const dynamicthemecolor = !window.matchMedia('(min--moz-device-pixel-ratio: 0)')
 if (domMetacolor && dynamicthemecolor) {
     document.body.addEventListener("transitionend", () => {
       try {
-        domMetacolor.content = getComputedStyle(document.body).getPropertyValue("--col-background");
+        domMetacolor.content = () => {
+            const bgvalue = getComputedStyle(document.body).getPropertyValue("--col-background");
+            const pattern = /^light\-dark\((.+),\s?(.+)\)$/;
+            if ( bgvalue && pattern.test(bgvalue) ) {
+                let colvalues = bgvalue.match(pattern);                    
+                if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+                    return colvalues[1];
+                } else {
+                    return colvalues[2];
+                }                
+            } else {
+             return value;
+            }            
+        }          
       } catch (err) {
         domMetacolor.content = "none";
       }
