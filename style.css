@@ -90,7 +90,7 @@ a {
   display: inline;
   padding: 0 0.75em;
   font-weight: 300;
-  background: var(--col-background);
+  background-color: var(--col-background);
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
   transition: background-color 1s;
