@@ -1,3 +1,5 @@
+import { css } from './vendor/lit-core.min.js';
+
 export const GridListStyles = css`
   ul {
     padding: 0;
