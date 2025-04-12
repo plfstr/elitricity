@@ -50,17 +50,19 @@ html {
 }
 
 body {
-  min-height: 100%;
-  margin: 0 auto;
-  place-content: center;
-  font: normal 100%/1.5 system-ui, sans-serif;
-  background-color: var(--col-background);
-  color: var(--col-body);
-  text-align: center;
-  font-size: clamp(1.125em, 2vw, 2em);
-  -webkit-text-size-adjust: 100%;
-  text-size-adjust: 100%;
-  transition: background-color 1s;
+    min-height: 100%;
+    margin: 0 auto;
+    place-content: center;
+    font: normal 100%/1.5 system-ui, sans-serif;
+    background-color: var(--col-background);
+    color: var(--col-body);
+    text-align: center;
+    font-size: clamp(1.125em, 2vw, 2em);
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    transition: background-color 1s;
+    padding: env(safe-area-inset-top, 0.5rem) env(safe-area-inset-right, 0.5rem) env(safe-area-inset-bottom, 0.5rem) env(safe-area-inset-left, 0.5rem);
+    padding: env(safe-area-max-inset-top, 0.5rem) env(safe-area-max-inset-right, 0.5rem) env(safe-area-max-inset-bottom, 0.5rem) env(safe-area-max-inset-left, 0.5rem);
 }
 
 h1 {
