@@ -1,5 +1,5 @@
 import { LitElement, html, render, css } from './vendor/lit-core.min.js';
-import {GridListStyles, GridInfoStyles} from './style-components.js';
+import componentstyles from './style-components.css' with { type: 'css' };
 
 if (window.trustedTypes && trustedTypes.createPolicy) {
     trustedTypes.createPolicy('default', {
@@ -117,7 +117,7 @@ customElements.define('grid-sources', GridSources);
 // <grid-list>
 export class GridList extends LitElement {
 
-  static styles = [GridListStyles];
+  static styles = [componentstyles];
 
   static properties = {
     generation: { type: Array }
@@ -157,7 +157,7 @@ customElements.define('grid-list', GridList);
 // <grid-info>
 export class GridInfo extends LitElement {
 
-  static styles = [GridInfoStyles];
+  static styles = [componentstyles];
 
   static properties = {
     from: { type: Date },
