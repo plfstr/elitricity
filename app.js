@@ -64,7 +64,7 @@ export class GridSources extends LitElement {
       if (json?.data?.generationmix.length) {
           this.expired = false;
           this.message = null;
-          this.griddata = json;
+          this.griddata = json.data;
           this.to = json?.data?.to;
       } else {
           throw new Error(json?.error?.message ?? 'Data not currently available');
@@ -105,8 +105,8 @@ export class GridSources extends LitElement {
   render() {
     return html`
       <p role="status">${this.message}</p>
-      <grid-list .generation=${this?.griddata?.data?.generationmix}></grid-list>
-      <grid-info from=${this?.griddata?.data?.from} ?newdata=${this.expired}></grid-info>
+      <grid-list .generation=${this?.griddata?.generationmix}></grid-list>
+      <grid-info from=${this?.griddata?.from} ?newdata=${this.expired}></grid-info>
     `
   }
 
