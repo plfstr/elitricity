@@ -34,7 +34,6 @@ export class GridSources extends LitElement {
   constructor() {
     super();
     this.griddata = null;
-    this.from = '';
     this.message = '';
     this.expired = false;
     this.addEventListener('refreshnow', (e) => e.detail.refresh ? this.fetchdata() : false);
@@ -65,7 +64,6 @@ export class GridSources extends LitElement {
           this.expired = false;
           this.message = null;
           this.griddata = json.data;
-          this.to = json?.data?.to;
       } else {
           throw new Error(json?.error?.message ?? 'Data not currently available');
       }
@@ -89,7 +87,7 @@ export class GridSources extends LitElement {
   };
 
   fetchexpired() {
-    let timeuntil = new Date(this.to).getTime() + timevalid;
+    let timeuntil = new Date(this.griddata?.to).getTime() + timevalid;
     let timenow = new Date().getTime();
     console.warn(timenow > timeuntil)
     return timenow > timeuntil;
