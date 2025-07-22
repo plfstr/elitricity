@@ -104,7 +104,7 @@ export class GridSources extends LitElement {
     return html`
       <p role="status">${this.message}</p>
       <grid-list .generation=${this?.griddata?.generationmix}></grid-list>
-      <grid-info from=${this?.griddata?.from} ?newdata=${this.expired}></grid-info>
+      <grid-info from=${this?.griddata?.from} ?dataexpired=${this.expired}></grid-info>
     `
   }
 
@@ -158,7 +158,7 @@ export class GridInfo extends LitElement {
 
   static properties = {
     from: { type: Date },
-    newdata: { type: Boolean }
+    dataexpired: { type: Boolean }
   };
 
   constructor() {
@@ -184,7 +184,7 @@ export class GridInfo extends LitElement {
 
   render() {
     return html`${this.from ? html`
-      <p class="lowlight">(${this._toggleLabel()} <time datetime="${this.from}">${this._dateLocale(this.from)}</time>) <button ?hidden=${!this.newdata} @click=${this._refresh}>Update Data!</button></p>
+      <p class="lowlight">(${this._toggleLabel()} <time datetime="${this.from}">${this._dateLocale(this.from)}</time>) <button ?hidden=${!this.dataexpired} @click=${this._refresh}>Update Data!</button></p>
       ` : null
     }`
   }
