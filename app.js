@@ -123,7 +123,6 @@ export class GridList extends LitElement {
 
   constructor() {
     super();
-    this.generation = [];
   }
 
   render() {
