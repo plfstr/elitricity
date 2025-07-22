@@ -9,7 +9,7 @@ if (window.trustedTypes && trustedTypes.createPolicy) {
 
 // Set meta theme color to match intensity background...
 const domMetacolor = document.querySelector('meta[name="theme-color"]');
-const dynamicthemecolor = !window.matchMedia('(min--moz-device-pixel-ratio: 0)').matches;
+const dynamicthemecolor = !window.matchMedia('(min--moz-device-pixel-ratio: 0),(forced-colors: active)').matches;
 if (domMetacolor && dynamicthemecolor) {
     document.body.addEventListener("transitionend", () => {
       try {
@@ -74,16 +74,17 @@ export class GridSources extends LitElement {
   }
 
   fetchintensity() {
+    if (window.matchMedia('(forced-colors: active)').matches) return;
     fetch('https://api.carbonintensity.org.uk/intensity', { priority: 'low' }).then(response => {
       if (response.ok) {
         return response.json();
       }
     })
-      .then(response => {
+    .then(response => {
         // Apply data-carbon intensity value to body
         document.body.dataset.carbon = response?.data[0]?.intensity?.index ?? 'low';
-      })
-      .catch(err => console.error('Intensity Error!', err.message))
+    })
+    .catch(err => console.error('Intensity Error!', err.message))
   };
 
   fetchexpired() {
