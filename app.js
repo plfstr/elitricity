@@ -70,6 +70,7 @@ export class GridSources extends LitElement {
     } catch (error) {
       console.error('Grid generation error', error.message);
       this.message = `Grid data error (${error.message})`;
+      this.expired = true;
     }
   }
 
