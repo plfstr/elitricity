@@ -152,6 +152,7 @@ export class GridSources extends LitElement {
       <p role="status">${this.message}</p>
       <grid-list .generation=${this?.griddata?.generationmix}></grid-list>
       <grid-info from=${this?.griddata?.from} ?dataexpired=${this.expired}></grid-info>
+      <grid-regions .regiondata=${this?.regions} .regionselected=${this?.regionsdata} @regionchange=${this?.regionlistener}></grid-regions>
     `
   }
 
