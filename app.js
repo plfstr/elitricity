@@ -1,5 +1,5 @@
 import { LitElement, html, render, css } from './vendor/lit-core.min.js';
-import {GridListStyles, GridInfoStyles} from './style-components.js';
+import {GridListStyles, GridInfoStyles, GridRegionsStyles} from './style-components.js';
 
 if (window.trustedTypes && trustedTypes.createPolicy) {
     trustedTypes.createPolicy('default', {
