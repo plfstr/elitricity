@@ -74,7 +74,19 @@ export class GridSources extends LitElement {
     });
     window.setInterval(() => this.fetchfocused(), timevalid / 6);
   }
+    
+  regionlistener(e) {
+    let url = new URL(window.location.href);
+        url.searchParams.set('region', e.detail);
+    history.replaceState(history.state, '', url.href);
+    this.fetchdata();
+    this.regionsdata = e.detail;
+  }
 
+  fetchregion(region) {
+    return this.regions[region] ?? null;
+  }
+    
   fetchdata = async () => {
     this.message = 'Loading…';
     try {
