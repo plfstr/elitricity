@@ -41,3 +41,15 @@ export const GridInfoStyles = css`
     font-size: initial;
   }
 `;
+
+export const GridRegionsStyles = css`
+    select {
+      display: block;
+      margin: auto;
+      padding: 0.5rem;
+      border-radius: 0.25rem;
+      background-color: transparent;
+      color: inherit;
+      border: 2px solid;
+    }  
+`;
