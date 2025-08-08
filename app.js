@@ -65,7 +65,9 @@ export class GridSources extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     this.fetchdata();
-    this.fetchintensity();
+    if (!new URL(document.location).searchParams.size) {
+        this.fetchintensity();
+    }
     window.addEventListener('focus', ev => {
       if (this.fetchexpired()) {
         console.error('Data has expired!');
