@@ -91,8 +91,16 @@ export class GridSources extends LitElement {
     
   fetchdata = async () => {
     this.message = 'Loading…';
+    let generation = new URL("/generation", "https://api.carbonintensity.org.uk");
+    let regionparam = new URLSearchParams(document.location.search).get('region') ?? null;
+    let regionid = this.fetchregion(regionparam);
+    if (regionid) {
+      generation.pathname = encodeURI(`/regional/regionid/${ regionid }`);
+    } else {
+      generation.pathname = '/generation';
+    }
     try {
-      let response = await fetch('https://api.carbonintensity.org.uk/generation', {signal: AbortSignal.timeout(10000)});
+      let response = await fetch(generation, {signal: AbortSignal.timeout(10000)});
       const json = await response.json();
       const dataroot = json?.data?.[0]?.data?.[0] ?? json?.data;
       if (dataroot?.generationmix.length) {
