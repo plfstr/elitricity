@@ -94,10 +94,11 @@ export class GridSources extends LitElement {
     try {
       let response = await fetch('https://api.carbonintensity.org.uk/generation', {signal: AbortSignal.timeout(10000)});
       const json = await response.json();
-      if (json?.data?.generationmix.length) {
+      const dataroot = json?.data?.[0]?.data?.[0] ?? json?.data;
+      if (dataroot?.generationmix.length) {
           this.expired = false;
           this.message = null;
-          this.griddata = json.data;
+          this.griddata = dataroot;
       } else {
           throw new Error(json?.error?.message ?? 'Data not currently available');
       }
