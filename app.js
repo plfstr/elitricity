@@ -212,6 +212,36 @@ export class GridInfo extends LitElement {
 }
 customElements.define('grid-info', GridInfo);
 
+// <grid-region>
+export class GridRegions extends LitElement {
+
+  static styles = [GridRegionsStyles]
+
+  static properties = {
+    regiondata: { type: Object },
+    regionselected: { type: String }
+  };
+
+  regionparam(e) {
+      let region = e.target.value;
+      if (region) {
+        this.dispatchEvent(new CustomEvent('regionchange', {detail: region, bubbles: true, composed: true}));
+      }
+  }
+
+  render() {
+    return html`
+      <select @change=${this.regionparam}>
+        <option .value="0">National</option>
+        ${Object.keys(this.regiondata).map((region) => html`
+        <option .value=${region} ?selected=${region === this.regionselected}>${region}</option>
+        `)}
+      </select>
+    `
+  }
+}
+customElements.define('grid-regions', GridRegions);
+
 if ("serviceWorker" in navigator) {
   if (navigator.serviceWorker.controller) {
     console.log("Service Worker Registered");
