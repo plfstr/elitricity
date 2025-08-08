@@ -99,6 +99,9 @@ export class GridSources extends LitElement {
           this.expired = false;
           this.message = null;
           this.griddata = dataroot;
+          if (dataroot?.intensity?.index) {
+            document.body.dataset.carbon = dataroot?.intensity?.index ?? 'null';
+          }
       } else {
           throw new Error(json?.error?.message ?? 'Data not currently available');
       }
