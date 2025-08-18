@@ -82,9 +82,12 @@ export class GridSources extends LitElement {
     })
     .then(response => {
         // Apply data-carbon intensity value to body
-        document.body.dataset.carbon = response?.data[0]?.intensity?.index ?? 'low';
+        document.body.dataset.carbon = response?.data[0]?.intensity?.index ?? 'none';
     })
-    .catch(err => console.error('Intensity Error!', err.message))
+    .catch((err) => {
+        console.error('Intensity Error!', err.message);
+        document.body.dataset.carbon = 'none';
+    });
   };
 
   fetchexpired() {
