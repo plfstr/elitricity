@@ -5,6 +5,10 @@
     --col-lowlight: rgba(250,250,250,0.5);
 }
 
+[data-carbon$='none'] {
+  --col-background: #5e5e5e;
+}
+
 [data-carbon$='low'] {
   --col-background: #24a295;
 }
