@@ -74,22 +74,24 @@ export class GridSources extends LitElement {
     }
   }
 
-  fetchintensity() {
+  async fetchintensity() {
     if (window.matchMedia('(forced-colors: active)').matches) return;
-    fetch('https://api.carbonintensity.org.uk/intensity', { priority: 'low' }).then(response => {
-      if (response.ok) {
-        return response.json();
-      }
-    })
-    .then(response => {
+    try {
+        let response = fetch('https://api.carbonintensity.org.uk/intensity', { 
+            priority: 'low',
+            signal: AbortSignal.timeout(3000)
+        });
+        if (!response.ok) {
+            throw new Error(`HTTP error: ${response.status}`);
+        }
+        let json = await response.json();
         // Apply data-carbon intensity value to body
-        document.body.dataset.carbon = response?.data[0]?.intensity?.index ?? 'none';
-    })
-    .catch((err) => {
+        document.body.dataset.carbon = json?.data[0]?.intensity?.index ?? 'none';
+    } catch(err) {
         console.error('Intensity Error!', err.message);
         document.body.dataset.carbon = 'none';
-    });
-  };
+    }
+  }
 
   fetchexpired() {
     let timeuntil = new Date(this.griddata?.to).getTime() + timevalid;
