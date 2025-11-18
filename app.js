@@ -77,16 +77,15 @@ export class GridSources extends LitElement {
   async fetchintensity() {
     if (window.matchMedia('(forced-colors: active)').matches) return;
     try {
-        let response = fetch('https://api.carbonintensity.org.uk/intensity', { 
+        let response = await fetch('https://api.carbonintensity.org.uk/intensity', { 
             priority: 'low',
             signal: AbortSignal.timeout(3000)
         });
-        if (!response.ok) {
-            throw new Error(`HTTP error: ${response.status}`);
+        if (response.ok) {
+            let json = await response.json();
+            // Apply data-carbon intensity value to body
+            document.body.dataset.carbon = json?.data[0]?.intensity?.index ?? 'none';
         }
-        let json = await response.json();
-        // Apply data-carbon intensity value to body
-        document.body.dataset.carbon = json?.data[0]?.intensity?.index ?? 'none';
     } catch(err) {
         console.error('Intensity Error!', err.message);
         document.body.dataset.carbon = 'none';
