@@ -25,10 +25,6 @@ let timevalid = 1000 * 60 * 33;
 
 export class GridSources extends LitElement {
 
-  createRenderRoot() {
-    return this;
-  }
-
   static properties = {
     griddata: { type: Object, state: true },
     message: { type: String, state: true },
@@ -125,9 +121,7 @@ customElements.define('grid-sources', GridSources);
 // <grid-list>
 export class GridList extends LitElement {
 
-  createRenderRoot() {
-    return this;
-  }
+  static styles = [GridListStyles];
 
   static properties = {
     generation: { type: Array }
@@ -166,9 +160,7 @@ customElements.define('grid-list', GridList);
 // <grid-info>
 export class GridInfo extends LitElement {
 
-  createRenderRoot() {
-    return this;
-  }
+  static styles = [GridInfoStyles];
 
   static properties = {
     from: { type: Date },

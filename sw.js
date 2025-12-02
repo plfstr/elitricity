@@ -3,7 +3,8 @@ const CACHE_NAME = 'elit-cache';
 // Assets to precache here:
 const PRECACHE_ASSETS = [
     'index.html?20240628',
-    'style.css?20251011',
+    'style.css?20240522',
+    'style-components.js',
     'app.js?20240529',
     'manifest.json'
 ]
