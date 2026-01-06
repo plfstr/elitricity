@@ -8,7 +8,7 @@ if (window.trustedTypes && trustedTypes.createPolicy) {
 
 // Set meta theme color to match intensity background...
 const domMetacolor = document.querySelector('meta[name="theme-color"]');
-const dynamicthemecolor = !window.matchMedia('(min--moz-device-pixel-ratio: 0),(forced-colors: active)').matches;
+const dynamicthemecolor = !window.matchMedia('(forced-colors: active)').matches;
 if (domMetacolor && dynamicthemecolor) {
     document.body.addEventListener("transitionend", () => {
       try {
@@ -78,7 +78,7 @@ export class GridSources extends LitElement {
   }
 
   async fetchintensity() {
-    if (window.matchMedia('(forced-colors: active)').matches) return;
+    if (!dynamicthemecolor) return;
     try {
         let response = await fetch('https://api.carbonintensity.org.uk/intensity', { 
             priority: 'low',
