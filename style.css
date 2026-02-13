@@ -23,7 +23,7 @@
       --col-background: #de431f;
     }
     
-    @media only screen and (prefers-color-scheme: dark) {
+    @media (prefers-color-scheme: dark) {
         :root {
           --col-body: #ddd;
           --col-background: #12796f;
