@@ -5,7 +5,7 @@
     --col-lowlight: rgba(250,250,250,0.5);
 }
 
-@supports not (--col-background: if(else: red)) {
+@supports not (background-color: if(else: red)) {
 
     [data-carbon$='none'] {
       --col-background: #5e5e5e;
