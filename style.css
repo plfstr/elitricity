@@ -57,7 +57,7 @@ html {
 }
 
 body {
-    --carbon: attr(data-carbon type(<custom-ident>, none));
+    --carbon: attr(data-carbon type(<custom-ident>));
     --col-background: if(
         style(--carbon: low): light-dark(#24a295, #12796f);
         style(--carbon: moderate): light-dark(#d2802a, #a96722);
