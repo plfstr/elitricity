@@ -5,38 +5,41 @@
     --col-lowlight: rgba(250,250,250,0.5);
 }
 
-[data-carbon$='none'] {
-  --col-background: #5e5e5e;
-}
+@supports not (--col-background: if(else: red)) {
 
-[data-carbon$='low'] {
-  --col-background: #24a295;
-}
-
-[data-carbon='moderate'] {
-  --col-background: #d2802a;
-}
-
-[data-carbon$='high'] {
-  --col-background: #de431f;
-}
-
-@media only screen and (prefers-color-scheme: dark) {
-    :root {
-      --col-body: #ddd;
-      --col-background: #12796f;
+    [data-carbon$='none'] {
+      --col-background: #5e5e5e;
     }
     
     [data-carbon$='low'] {
-          --col-background: #12796f;
+      --col-background: #24a295;
     }
-     
+    
     [data-carbon='moderate'] {
-          --col-background: #a96722;
+      --col-background: #d2802a;
     }
     
     [data-carbon$='high'] {
-          --col-background: #92311a;
+      --col-background: #de431f;
+    }
+    
+    @media (prefers-color-scheme: dark) {
+        :root {
+          --col-body: #ddd;
+          --col-background: #12796f;
+        }
+        
+        [data-carbon$='low'] {
+              --col-background: #12796f;
+        }
+         
+        [data-carbon='moderate'] {
+              --col-background: #a96722;
+        }
+        
+        [data-carbon$='high'] {
+              --col-background: #92311a;
+        }
     }
 }
 
@@ -54,6 +57,13 @@ html {
 }
 
 body {
+    --carbon: attr(data-carbon type(<custom-ident>));
+    --col-background: if(
+        style(--carbon: low): light-dark(#24a295, #12796f);
+        style(--carbon: moderate): light-dark(#d2802a, #a96722);
+        style(--carbon: high): light-dark(#de431f, #92311a);
+        else: #5e5e5e;
+    );
     min-height: 100%;
     margin: 0 auto;
     place-content: center;
