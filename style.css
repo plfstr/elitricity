@@ -6,10 +6,6 @@
 }
 
 @supports not (background-color: if(else: red)) {
-
-    [data-carbon$='none'] {
-      --col-background: #5e5e5e;
-    }
     
     [data-carbon$='low'] {
       --col-background: #24a295;
