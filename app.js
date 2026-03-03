@@ -2,7 +2,13 @@ import { LitElement, html, render, css } from './vendor/lit-core.min.js';
 
 if (window.trustedTypes && trustedTypes.createPolicy) {
     trustedTypes.createPolicy('default', {
-      createScriptURL: string => encodeURI(string)
+      createScriptURL: (string) => {
+          if (string.startsWith(window.location.href) || string.startsWith('https://api.carbonintensity.org.uk')) {
+              return encodeURI(string)
+          } else {
+              return "";
+          }
+      }
     });
 }
 
