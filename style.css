@@ -163,3 +163,21 @@ button {
     font-weight: bold;
     font-size: initial;
 }
+
+@media (horizontal-viewport-segments: 2) {
+ 
+  grid-sources ul,
+  grid-info p {
+   column-count: 2;
+   column-gap: calc(env(viewport-segment-left 1 0) - env(viewport-segment-right 0 0));
+ }
+
+  header, aside, footer {
+    width: env(viewport-segment-width 0 0);
+  }
+
+  aside, footer {
+    margin-inline-start: env(viewport-segment-left 1 0);
+  }
+
+}
