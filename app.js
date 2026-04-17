@@ -8,7 +8,7 @@ if (window.trustedTypes && trustedTypes.createPolicy) {
 
 // Set meta theme color to match intensity background...
 const domMetacolor = document.querySelector('meta[name="theme-color"]');
-const dynamicthemecolor = window.matchMedia('not (forced-colors: active), not (monochrome)').matches;
+const dynamicthemecolor = window.matchMedia('not (forced-colors: active), not (monochrome), not (update: slow)').matches;
 if (domMetacolor && dynamicthemecolor) {
     document.body.addEventListener("transitionend", () => {
       try {
