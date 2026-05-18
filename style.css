@@ -134,7 +134,12 @@ ul {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-evenly;
-    gap: .5rem;
+    gap: .75rem;
+    @supports (rule: 2px solid #fff) {
+        line-height: 1.25;
+        column-rule: 2px solid var(--col-lowlight);
+        rule-inset: 1rem;
+    }
 }
 
 .cover {
@@ -153,18 +158,10 @@ ul {
     font-size: 1.125em;
     border-top: 0.0625rem solid var(--col-lowlight);
     font-variant-numeric: tabular-nums;
-}
-
-@supports (rule: 2px solid var(--col-lowlight)) {
-    .cover {
-        rule: 0.0625rem solid var(--col-lowlight);
-        rule-visibility-items: between;
-    }
-    .num {
+    @supports (rule: 2px solid #fff) {
         border-top: none;
     }
 }
-
 
 p {
     margin: 0;
