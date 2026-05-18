@@ -130,7 +130,9 @@ a {
 
 ul {
     padding: 0;
-    text-wrap: balance;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
 }
 
 .cover {
@@ -149,6 +151,12 @@ ul {
     font-size: 1.125em;
     border-top: 0.0625rem solid var(--col-lowlight);
     font-variant-numeric: tabular-nums;
+}
+
+@supports {
+    .cover {
+        
+    }
 }
 
 
