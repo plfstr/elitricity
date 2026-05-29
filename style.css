@@ -133,6 +133,7 @@ ul {
     margin: 0;
     display: flex;
     flex-flow: row wrap;
+    flex-wrap: balance;
     justify-content: space-evenly;
     gap: .75rem;
     @supports (rule: 2px solid #fff) {
