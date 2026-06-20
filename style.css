@@ -150,6 +150,9 @@ ul {
     padding: .15em;
     text-transform: capitalize;
     font-weight: normal;
+    &:nth-of-type(2) {
+        opacity: .6;
+    }
 }
 
 .num {
