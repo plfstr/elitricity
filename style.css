@@ -150,7 +150,7 @@ ul {
     padding: .15em;
     text-transform: capitalize;
     font-weight: normal;
-    &:nth-of-type(2) {
+    &[data-percent="0"] {
         opacity: .6;
     }
 }
