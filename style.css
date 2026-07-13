@@ -11,40 +11,6 @@
   }
 }
 
-@supports not (background-color: if(else: red)) {
-    
-    [data-carbon$='low'] {
-      --col-background: #24a295;
-    }
-    
-    [data-carbon='moderate'] {
-      --col-background: #d2802a;
-    }
-    
-    [data-carbon$='high'] {
-      --col-background: #de431f;
-    }
-    
-    @media (prefers-color-scheme: dark) {
-        :root {
-          --col-body: #ddd;
-          --col-background: #12796f;
-        }
-        
-        [data-carbon$='low'] {
-              --col-background: #12796f;
-        }
-         
-        [data-carbon='moderate'] {
-              --col-background: #a96722;
-        }
-        
-        [data-carbon$='high'] {
-              --col-background: #92311a;
-        }
-    }
-}
-
 html {
   box-sizing: border-box;
   height: 100%;
