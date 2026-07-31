@@ -140,7 +140,7 @@ export class GridList extends LitElement {
     return html`${this.generation ? html`
     <ul>
       ${this.generation.map((source) => html`
-        <li class="cover">${source.fuel}<span class="num">${source.perc}%</span></li>
+        <li class="cover" data-percent="${source.perc}">${source.fuel}<span class="num">${source.perc}%</span></li>
       `)}
     </ul>
     ` : html`
