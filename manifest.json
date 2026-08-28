@@ -4,7 +4,7 @@
     "name" : "UK E-Lit-tricity Grid",
     "scope" : "/elitricity/",
     "display" : "standalone",
-    "start_url" : "/elitricity/",
+    "start_url" : "./",
     "short_name" : "Elitricity",
     "theme_color" : "#24a295",
     "description" : "Current mix of electricity sources in the UK National Grid using the Carbon Intensity API by National Grid",
