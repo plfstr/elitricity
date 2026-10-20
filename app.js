@@ -2,7 +2,12 @@ import { LitElement, html, render, css } from './vendor/lit-core.min.js';
 
 if (window.trustedTypes && trustedTypes.createPolicy) {
     trustedTypes.createPolicy('default', {
-      createScriptURL: string => encodeURI(string)
+      createScriptURL: string => {
+          if (string.startsWith('sw.js')) { 
+            return encodeURI(string)
+          }
+          throw new TypeError('Untrusted URL');
+      }
     });
 }
 
