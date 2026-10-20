@@ -177,6 +177,7 @@ button {
     background-color: transparent;
     -webkit-appearance: button;
     appearance: button;
+    cursor: pointer;
     border: .1875rem double currentcolor;
     background-color: var(--col-background);
     color: var(--col-lowlight);
