@@ -50,10 +50,7 @@ export class GridSources extends LitElement {
     this.fetchdata();
     this.fetchintensity();
     window.addEventListener('focus', ev => {
-      if (this.fetchexpired()) {
-        console.error('Data has expired!');
-        this.expired = true;
-      }
+        this.expired = this.fetchexpired();
     });
     window.setInterval(() => this.fetchfocused(), timevalid / 6);
   }
