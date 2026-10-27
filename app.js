@@ -39,7 +39,7 @@ export class GridSources extends LitElement {
     this.griddata = null;
     this.message = '';
     this.expired = false;
-    this.addEventListener('refreshnow', (e) => e.detail.refresh ? this.fetchdata() : false);
+    this.addEventListener('refreshnow', (e) => e.detail.refresh ? this.fetchfocused() : false);
     window.addEventListener("offline", (event) => {
       this.message = 'Currently offline. Displaying cached data.'
     });
