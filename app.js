@@ -40,8 +40,10 @@ export class GridSources extends LitElement {
     this.message = '';
     this.expired = false;
     this.addEventListener('refreshnow', (e) => e.detail.refresh ? this.fetchfocused() : false);
-    window.addEventListener('focus', ev => {
+    window.addEventListener('visibilitychange', ev => {
+      if (!document.hidden) {
         this.expired = this.fetchexpired();
+      }
     });
     window.setInterval(() => this.fetchfocused(), timevalid / 6);
     window.addEventListener("offline", (event) => {
