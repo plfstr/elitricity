@@ -40,6 +40,10 @@ export class GridSources extends LitElement {
     this.message = '';
     this.expired = false;
     this.addEventListener('refreshnow', (e) => e.detail.refresh ? this.fetchfocused() : false);
+    window.addEventListener('focus', ev => {
+        this.expired = this.fetchexpired();
+    });
+    window.setInterval(() => this.fetchfocused(), timevalid / 6);
     window.addEventListener("offline", (event) => {
       this.message = 'Currently offline. Displaying cached data.'
     });
@@ -49,10 +53,6 @@ export class GridSources extends LitElement {
     super.connectedCallback();
     this.fetchdata();
     this.fetchintensity();
-    window.addEventListener('focus', ev => {
-        this.expired = this.fetchexpired();
-    });
-    window.setInterval(() => this.fetchfocused(), timevalid / 6);
   }
 
   fetchdata = async () => {
