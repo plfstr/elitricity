@@ -5,6 +5,8 @@ const PRECACHE_ASSETS = [
     'index.html?20251202',
     'style.css?20251202',
     'app.js?20261110',
+    'style.css?20261110',
+    'app.js?20261027',
     'manifest.json'
 ]
 
