@@ -60,7 +60,7 @@ html {
 
 body {
     @supports (background-color: if(else: red)) {
-        --carbon: attr(data-carbon type(<custom-ident>));
+        --carbon: attr(data-carbon);
         --col-background: if(
             style(--carbon: low) or style(--carbon: very-low): light-dark(#24a295, #12796f);
             style(--carbon: moderate): light-dark(#d2802a, #a96722);
