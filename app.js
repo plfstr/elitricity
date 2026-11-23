@@ -11,7 +11,7 @@ const domMetacolor = document.querySelector('meta[name="theme-color"]');
 const dynamicthemecolor = window.matchMedia('not (forced-colors: active), not (monochrome)').matches;
 if (domMetacolor && dynamicthemecolor) {
     document.body.addEventListener("transitionend", () => {
-        domMetacolor.content = getComputedStyle(document.body).getPropertyValue("--col-background") ?? "none";
+        domMetacolor.content = document.body?.computedStyleMap().get("--col-background") ?? getComputedStyle(document.body).getPropertyValue("--col-background");
     })
 }
 
