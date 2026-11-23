@@ -44,6 +44,12 @@ export class GridSources extends LitElement {
       this.expired = false;
       this.message = 'Currently offline. Displaying cached data.'
     });
+    window.addEventListener("online", (event) => {
+      this.message = '';
+      if (this.fetchexpired()) {
+        this.expired = true;
+      }
+    });
   }
 
   connectedCallback() {
