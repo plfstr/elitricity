@@ -9,10 +9,11 @@ if (window.trustedTypes && trustedTypes.createPolicy) {
 // Set meta theme color to match intensity background...
 const domMetacolor = document.querySelector('meta[name="theme-color"]');
 const dynamicthemecolor = window.matchMedia('not (forced-colors: active), not (monochrome)').matches;
+function getBackground() {
+    domMetacolor.content = document.body.computedStyleMap?.().get("--col-background") ?? getComputedStyle(document.body).getPropertyValue("--col-background");
+}
 if (domMetacolor && dynamicthemecolor) {
-    document.body.addEventListener("transitionend", () => {
-        domMetacolor.content = document.body?.computedStyleMap().get("--col-background") ?? getComputedStyle(document.body).getPropertyValue("--col-background");
-    })
+    document.body.addEventListener("transitionend", getBackground)
 }
 
 let output = document.querySelector("#output");
