@@ -10,7 +10,7 @@ if (window.trustedTypes && trustedTypes.createPolicy) {
 const domMetacolor = document.querySelector('meta[name="theme-color"]');
 const dynamicthemecolor = window.matchMedia('not (forced-colors: active), not (monochrome)').matches;
 function getBackground() {
-    domMetacolor.content = document.body?.computedStyleMap().get("--col-background") ?? getComputedStyle(document.body).getPropertyValue("--col-background");
+    domMetacolor.content = document.body.computedStyleMap?.().get("--col-background") ?? getComputedStyle(document.body).getPropertyValue("--col-background");
 }
 if (domMetacolor && dynamicthemecolor) {
     document.body.addEventListener("transitionend", getBackground())
